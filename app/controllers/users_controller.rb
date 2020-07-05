@@ -19,7 +19,7 @@ before_action :authenticate_user!
 
 	def update
 		@user = User.find(params[:id])
-		if @user.update(customer_params)
+		if @user.update(user_params)
 			if user_signed_in?
 				flash[:notice] = "登録情報が更新されました。"
 				redirect_to user_path(user_customer)
