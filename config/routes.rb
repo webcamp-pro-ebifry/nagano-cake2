@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   	sessions: 'admins/sessions'
   }
   devise_for :users
-  resource :users
   get 'homes/top' => 'homes#top'
   root 'homes#top'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'users/withdrawal' => 'members#withdrawal'
+  resource :users, only:[:show ,:edit,:update]
+
 end
