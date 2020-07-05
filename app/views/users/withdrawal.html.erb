@@ -13,7 +13,7 @@
 <div class="row">
 <div class="withdrawl_form">
  <%= link_to "退会しない" user_path(@user.id), class: "btn btn-info" %>
- <%= form_for @form_for @user,:url => {controller: "users, action: "invalid"} do |f|%>
+ <%= form_for @user,:url => {controller: "users", action: "invaild"} do |f|%>
 
  <%= f.hidden_field :is_valid, {value: :false} %>
  <%= f.submit "退会する", class: "btn btn-danger" %>
