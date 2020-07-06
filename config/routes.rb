@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
  
+  namespace :admins do
+    get 'products/index'
+    get 'products/new'
+    get 'products/edit'
+  end
   devise_for :admins, controllers:{
   	sessions: 'admins/sessions'
   }
@@ -13,6 +18,12 @@ Rails.application.routes.draw do
     resources :genres
   end
   resources :genres
+
+  namespace :admins do
+    resources :products
+  end
+  resources :products
+  
 
   
 end
