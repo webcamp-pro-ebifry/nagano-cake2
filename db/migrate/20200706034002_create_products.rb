@@ -6,8 +6,8 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :image_id
       t.integer :price
       t.integer :genre_id
-      t.integer :product_status
-      t.boolean :delete_flag
+      t.integer :product_status, default: 0,  null: false
+      t.boolean :delete_flag, default: false, null:false
 
       t.timestamps
     end
