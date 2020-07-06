@@ -3,7 +3,7 @@
     <div class="col-xs-5">
       <h2>ジャンル一覧・追加</h2>
       <div class="new">
-        <%= form_for(@genre) do |f| %>
+        <%= form_for(@genre, url:admins_genre_path(@genre)) do |f| %>
                 <%= f.text_field :name, class:"form-control", placeholder:"Name" %>
                 <span>有効</span><%= f.radio_button :status, :valid %>
                 <span>無効</span><%= f.radio_button :status, :invalid %>
