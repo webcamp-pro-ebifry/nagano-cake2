@@ -11,10 +11,7 @@ before_action :authenticate_user!
 	end
 
 	def edit
-		@user = User.find(params[:id])
-		if @user.id = current_user.id
-			redirect_to root_path
-		end
+		@user = current_user
 	end
 
 	def update
@@ -22,7 +19,7 @@ before_action :authenticate_user!
 		if @user.update(user_params)
 			if user_signed_in?
 				flash[:notice] = "登録情報が更新されました。"
-				redirect_to user_path(user_customer)
+				redirect_to user_path(current_user)
 			else
 				redirect_to request.referrer
 			end

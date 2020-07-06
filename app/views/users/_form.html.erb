@@ -1,7 +1,7 @@
 <div class="row">
 <div class="col-lg-10 col-lg-offset-1">
 <%= form_for(user) do |f| %>
-<table class="edit_client_user">
+<table class="edit_users">
  <% if flash[:alert] %>
  <div class="alert alert-danger">
  <%= flash[:alert] %>
@@ -56,6 +56,6 @@
 </div>
 <% end %>
 <div class="col-lg-3">
-<%= link_to "退会する", withdrawl_user_path, class: "btn btn-danger" %>
+<%= link_to "退会する", users_withdrawal_path, class: "btn btn-danger" %>
 </div>
 </div>

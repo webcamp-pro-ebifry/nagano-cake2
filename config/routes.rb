@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   get 'homes/top' => 'homes#top'
   root 'homes#top'
   get 'users/withdrawal' => 'users#withdrawal'
-  resource :users, only:[:show ,:edit,:update]
+  resources :users, only:[:show ,:edit,:update]
 
 end
