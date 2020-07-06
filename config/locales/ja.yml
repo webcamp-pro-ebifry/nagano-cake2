@@ -1,0 +1,16 @@
+ja:
+  enums:
+    genre:
+      status:
+        "---": "---"
+        valid: "有効"
+        invalid: "無効"
+
+
+ja:
+  enums:
+    product:
+      product_status:
+        "---": "---"
+        valid: "販売中"
+        invalid: "売り切れ"
