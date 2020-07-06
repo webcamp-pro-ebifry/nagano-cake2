@@ -1,0 +1,7 @@
+ja:
+  enums:
+    genre:
+      status:
+        "---": "---"
+        valid: "有効"
+        invalid: "無効"
