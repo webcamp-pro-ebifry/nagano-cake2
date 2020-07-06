@@ -18,8 +18,6 @@
 	<%=f.submit%>
 
 <% end %>
-
-<h2>Books index</h2>
 			<!--books一覧 -->
 			<table class="table table-hover table-inverse">
 				<thead>
@@ -37,7 +35,11 @@
 						<td><%= f.postcode %></td>
 						<td><%= f.address %></td>
 						<td><%= f.name %></td>
+						<td><%= link_to "Edit",edit_shipping_address_path(f.id) %></td>
+						<td><%= link_to "Destroy", shipping_address_path(f.id) , method: :delete, "data-confirm" => "Are you sure?" %></td>
+					
 					</tr>
+
 					<% end %>
 				</tbody>
 			</table>

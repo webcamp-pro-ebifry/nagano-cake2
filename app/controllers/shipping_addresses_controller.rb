@@ -12,17 +12,26 @@ class ShippingAddressesController < ApplicationController
 		if @shipping.update(shipping_params)
 			redirect_to shipping_addresses_path
 		else
-			render "edit"
+			render "index"
 		end
 	end
 
 	def edit
+		@shipping = ShippingAddress.find(params[:id])
     end
 
     def update
+    	@shipping = ShippingAddress.find(params[:id])
+    	if @shipping.update(shipping_params)
+    		redirect_to shipping_addresses_path
+    	end
+
     end
 
-    def delete
+    def destroy
+    	@shipping = ShippingAddress.find(params[:id])
+    	@shipping.destroy
+    	redirect_to shipping_addresses_path
     end
 
     protected
