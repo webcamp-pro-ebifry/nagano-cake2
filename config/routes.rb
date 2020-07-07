@@ -7,12 +7,8 @@ Rails.application.routes.draw do
   get 'homes/top' => 'homes#top'
   root 'homes#top'
   get 'users/withdrawal' => 'users#withdrawal'
-  resources :users, only:[:show ,:edit,:update]
-  resources :products, only:[:index ,:show]
-
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+  resources :users, only:[:show,:edit,:update]
+  resources :products, only:[:index,:show]
   namespace :admins do
     resources :genres
   end
