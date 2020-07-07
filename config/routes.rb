@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'homes/about' => 'homes#about'
 
   root 'homes#top'
+  resources :shipping_addresses , only: [:index, :create, :edit, :update, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace :admins do

@@ -12,7 +12,11 @@ class Product < ApplicationRecord
         soldout: 1
     },_prefix: true
 
+<<<<<<< HEAD
     attachment :image
     has_many :genres, dependent: :destroy
 
+=======
+    has_many :genres, dependent: :destroy
+>>>>>>> dd816ab61001f4f5bb2d41b0eea5f5dabe74c07c
 end
