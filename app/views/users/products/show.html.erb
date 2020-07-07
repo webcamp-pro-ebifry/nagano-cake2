@@ -1,0 +1,18 @@
+<% provide(:title, "商品詳細") %>
+<% if flash[:notice] %>
+	<div class="alert alert-info text-center">
+			<%= flash[:notice] %>
+	</div>
+<% end %>
+<div class="container">
+</div>
+<div class="col-lg-5">
+<h1 class="pull-left" style="font-weight: bold; margin-top:100px;"><%= @products.name%></h1>
+</div>
+<div class="col-lg-5">
+<p class="pull-left"><%= @products.description %></p>
+</div>
+<div class="col-lg-5">
+<p class="pull-left"><strong>¥ <%= include_tax(@products.price) %></strong>(税込)</p>
+</div>
+</div>
