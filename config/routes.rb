@@ -8,9 +8,8 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'users/withdrawal' => 'users#withdrawal'
   resources :users, only:[:show ,:edit,:update]
+  resources :products, only:[:index ,:show]
 
-   get  'products' => 'products#index'
-   get  'products/:id' => 'products#show'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
