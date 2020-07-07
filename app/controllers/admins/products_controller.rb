@@ -38,8 +38,13 @@ class Admins::ProductsController < ApplicationController
   	@product = Product.find(params[:id])
   end
 
+  def show
+  	@product = Product.find(params[:id])
+  end
+
   private
   def product_params
+    
     params.require(:product).permit(:name, :introduce, :image, :price, :genre_id, :product_status, :delete_flag)
   end
 end
