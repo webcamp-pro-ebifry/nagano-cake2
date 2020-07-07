@@ -32,8 +32,8 @@
 					<% end %>
 		    	</td>
             	<td><%= product.price %></td>
-            	<td><%= product.genre_id %></td>
-            	<td>ステータス</td>
+            	<td><%= product.genres.name %></td>
+            	<td><%= product.product_status %></td>
 			</tr>
 		<% end %>
 	</tbody>
