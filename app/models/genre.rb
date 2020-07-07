@@ -4,5 +4,5 @@ class Genre < ApplicationRecord
         "無効": 1
       },_prefix: true
 
-     belongs_to :product
+     has_many :products, dependent: :destroy
 end
