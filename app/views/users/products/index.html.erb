@@ -1,11 +1,11 @@
 <% provide(:title, "商品一覧") %>
 <div class="container">
 	<% if @genre.present? == true %>
-		<h1 style="font-weight: bold"><%= @genre.name %><span class="count"> \ 全<%= @products.length%>件 /</span></h1>
+		<%= @genre.name %><span class="count"> \ 全<%= @products.length%>件 /</span></h1>
 	<% else %>
-		<h1 style="font-weight: bold">全ての商品<span class="count"> \ 全<%= @products.length%>件 /</span></h1>
+		全ての商品<span class="count"> 全件
 	<% end %>
-		<%= render 'user/index', index_produst: @index_products %>
+		<%= render 'user/index', index_products: @index_products %>
 	<div class="col-lg-offset-2 col-lg-10">
 		<%= paginate @index_products %>
 	</div>
