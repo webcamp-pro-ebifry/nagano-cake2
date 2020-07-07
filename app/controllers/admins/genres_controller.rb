@@ -21,7 +21,7 @@ class Admins::GenresController < ApplicationController
 
   def update
     @genre = Genre.find(params[:id])
-    if @genre.update(genre_params)
+    if @genre.update(name: params[:genre][:name], status: params[:genre][:status].to_i)
       flash[:notice] = "successfully"
       redirect_to admins_genres_path
     else
@@ -29,6 +29,8 @@ class Admins::GenresController < ApplicationController
       render :edit
     end
   end
+
+  
 
 
   private
