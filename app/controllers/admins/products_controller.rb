@@ -8,4 +8,8 @@ class Admins::ProductsController < ApplicationController
 
   def edit
   end
+
+  def show
+  	@product = Product.find(params[:id])
+  end
 end
