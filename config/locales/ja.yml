@@ -2,9 +2,8 @@ ja:
   enums:
     genre:
       status:
-        "---": "---"
-        valid: "有効"
-        invalid: "無効"
+        valid: 有効
+        invalid: 無効
 
 
 ja:

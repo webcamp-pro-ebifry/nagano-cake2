@@ -1,7 +1,7 @@
 <div class="container">
 	<h2>商品詳細</h2>
 	<div class="row">
-		<%= attachment_image_tag @product, :image %>
+		<%= attachment_image_tag @product, :image ,fallback: "no_image.jpg"%>
 	</div>
 	<div class="row">
 		<h4>商品名</h4>
@@ -23,5 +23,5 @@
 		<h4>販売ステータス</h4>
 		<h4>ステータス</h4>
 	</div>
-	<%= link_to "Edit", edit_%>
+	<%= link_to "Edit", edit_admins_product_path %>
 </div>

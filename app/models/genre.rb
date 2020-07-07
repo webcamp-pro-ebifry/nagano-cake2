@@ -1,6 +1,6 @@
 class Genre < ApplicationRecord
     enum status: {
-        valid: 0,
-        invalid: 1
+        "有効": 0,
+        "無効": 1
       },_prefix: true
 end
