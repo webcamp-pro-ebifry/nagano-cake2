@@ -22,11 +22,17 @@
                 <div>
                     <span>税抜き価格</span>
                     <%= f.text_field :price, class:"form-control" %>
+                </div
+                <div>
+                    <span>販売ステータス</span>
+                    <%= f.select(:product_status, {'販売中': '販売中', '売り切れ': '売り切れ'}, {include_blank: "選択して下さい"}) %>
+        
                 </div>
 
+                
                 <span>
-                <%= f.submit "新規登録", class:"btn btn-primary btn-md btn-block btn-base-1 mt-20" %>
-                </span>
+                    <%= f.submit "新規登録", class:"btn btn-primary btn-md btn-block btn-base-1 mt-20" %>
+                    </span>
             <% end %>
         </div>
     </div>
