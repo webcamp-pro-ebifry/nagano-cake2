@@ -7,7 +7,13 @@
 	<table>
 		<tr>
 			<th>顧客ID</th>
-			<th><%= @user.id %>ステータス</th>
+			<th>
+				<%= @user.id %><% if @user.deleted == true %>
+            			<p>退会会員</p>
+                    <% else %>
+            			<p>有効会員</p>
+            	<% end %>
+			</th>
 		</tr>
 		<tr>
 			<th>氏名</th>

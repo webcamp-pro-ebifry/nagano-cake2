@@ -31,7 +31,13 @@
 					<% end %>
 		    	</td>
             	<td><%= user.email %></td>
-            	<td>ステータス</td>
+            	<td>
+            		<% if user.deleted == true %>
+            			<p>退会済み</p>
+                    <% else %>
+            			<p>有効</p>
+            		<% end %>
+            	</td>
 			</tr>
 		<% end %>
 	</tbody>

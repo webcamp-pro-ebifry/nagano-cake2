@@ -6,7 +6,7 @@ class Admins::GenresController < ApplicationController
 
   def create
 		@genres = Genre.all
-		@genre = Genre.new(genre_params)
+		@genre = Genre.new(name: params[:genre][:name], status: params[:genre][:status].to_i)
     if @genre.save
       flash[:notice] = "successfully"
       redirect_to admins_genres_path

@@ -15,7 +15,7 @@
   <nav>
     <ul>
       <% if user_signed_in? %>
-        <li><%= link_to "マイページ", homes_top_path %></li>
+        <li><%= link_to "マイページ", users_path %></li>
         <li><%= link_to "カート", homes_top_path %></li>
         <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
       <% elsif admin_signed_in? %>

@@ -44,11 +44,6 @@ class Admins::ProductsController < ApplicationController
 
   private
   def product_params
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> dd816ab61001f4f5bb2d41b0eea5f5dabe74c07c
     params.require(:product).permit(:name, :introduce, :image, :price, :genre_id, :product_status, :delete_flag)
   end
 end

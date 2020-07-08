@@ -3,13 +3,15 @@ Rails.application.routes.draw do
   namespace :admins do
    resources :users, only: [:index,:show,:edit,:update]
   end
-
+ 
+  resource :users, only:[:show ,:edit,:update]
+   get 'users/withdrawal' => 'users#withdrawal'
+ 
   devise_for :admins, controllers:{
   	sessions: 'admins/sessions'
   }
   devise_for :users
-  resources :users, only:[:show ,:edit,:update]
-   get 'users/withdrawal' => 'users#withdrawal'
+
   get 'homes/top' => 'homes#top'
   get 'homes/about' => 'homes#about'
 

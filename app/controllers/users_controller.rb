@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 before_action :authenticate_user!
- def show
+    def show
 		@user = current_user
 	end
 
@@ -15,11 +15,11 @@ before_action :authenticate_user!
 	end
 
 	def update
-		@user = User.find(params[:id])
+		@user = User.find(current_user.id)
 		if @user.update(user_params)
 			if user_signed_in?
 				flash[:notice] = "登録情報が更新されました。"
-				redirect_to user_path(current_user)
+				redirect_to users_path(current_user)
 			else
 				redirect_to request.referrer
 			end
@@ -46,7 +46,7 @@ before_action :authenticate_user!
 
 	private
 	def user_params
-		params.require(:user).permit(:first_name, :last_name, :kana_first_name, :kana_last_name, :email, :postcode, :address, :phone_number, :is_valid,:reset_password_token, :password, :password_confirmation)
+		params.require(:user).permit(:firstname, :lastname, :firstname_ruby, :lastname_ruby, :email, :postal_code, :address, :phone_number)
 	end
 end
 
