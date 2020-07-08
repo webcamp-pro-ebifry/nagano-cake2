@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   }
   devise_for :users
   resources :users, only:[:show ,:edit,:update]
-   get 'users/withdrawal' => 'users#withdrawal'
+  get 'users/withdrawal' => 'users#withdrawal'
   get 'homes/top' => 'homes#top'
   get 'homes/about' => 'homes#about'
 

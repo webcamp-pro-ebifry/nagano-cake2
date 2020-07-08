@@ -1,0 +1,14 @@
+<h3>商品一覧</h3>
+<% provide(:title, "商品一覧") %>
+<div class="container">
+
+	<% if @genre.present? == true %>
+
+<%= @genre.name %><span class="count"> \ 全<%= @products.length%>件 /</span></h1>
+	<% else %>
+<span class="count"> 全件
+<%= render "show", product: @product, index_products: @products %>
+
+	<% end %>
+	</div>
+</div>
