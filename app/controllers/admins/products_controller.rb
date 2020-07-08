@@ -3,6 +3,7 @@ class Admins::ProductsController < ApplicationController
   	@products = Product.page(params[:page])
   end
 
+
   def new
     @product = Product.new
   end
