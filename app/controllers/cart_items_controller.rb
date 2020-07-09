@@ -24,16 +24,19 @@ class CartItemsController < ApplicationController
 
     def destroy
     	@cart = CartItem.find(params[:id])
-    	@cart.destroy
-    	redirect_to ""
+    	 if @cart.destroy
+    	    redirect_to ""
+    	 else
+    	 	render cart_items_path
+    	 end
     end
 
     def destroy_all
-    	@user = current_user
+    	@user = User.find(cuurent_user.id)
     	if @user.cart_items.destroy_all
     		flash[:notice] = "カートの商品を全て削除しました"
     	else
-    		render""
+    		render 'cart_items_path'
     	end
 
     end
