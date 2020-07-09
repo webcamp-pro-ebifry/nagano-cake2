@@ -7,12 +7,13 @@ class Product < ApplicationRecord
      },_prefix: true
 
 
+
     # enum product_status: {
     #     sale: 0,
     #     soldout: 1
     # },_prefix: true
-    
     attachment :image
 
 
 end
+

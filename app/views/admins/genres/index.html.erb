@@ -4,20 +4,18 @@
       <h2>ジャンル一覧・追加</h2>
       <div class="new">
         <%= form_for(@genre, url: admins_genres_path) do |f| %>
-                <h4>ジャンル</h4>
+                <span>ジャンル</span>
                 <%= f.text_field :name, class:"form-control" %>
                 <span class="fa fa-building form-control-icon" aria-hidden="true"></span>
                     <span>有効</span><%= f.radio_button :status, 0 %>
-                    <span>無効</span><%= f.radio_button :status, 1 %>              
+                    <span>無効</span><%= f.radio_button :status, 1 %>
                 <span>
                 <%= f.submit "追加", class:"btn btn-primary btn-md btn-block btn-base-1 mt-20" %>
                 </span>
         <% end %>
     </div>
 
-
-
-    <table class="table">
+    <table class="table table-striped">
         <thead>
         <tr>
             <th>ジャンル</th>
@@ -28,16 +26,18 @@
         <tbody>
         <% @genres.each do |genre| %>
         <tr>
-            <td><%= genre.name %></td>         
+            <td><%= genre.name %></td>
             <td><%= genre.status_i18n %></td>
-            <td><%= link_to "編集する", edit_admins_genre_path(genre) %></td>
+            <td><%= link_to "編集する", edit_admins_genre_path(genre), class: "btn btn-primary" %></td>
         </tr>
         <% end %>
         </tbody>
     </table>
-  
-    </div>
-  </div>
+    <%= paginate @genres %>
 </div>
+</div>
+</div>
+  
+
 
 
