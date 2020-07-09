@@ -9,10 +9,9 @@ class CartItemsController < ApplicationController
     end
 
     def create
-    	@cart = CartItem.new
-    	@cart.user_id = current_user.id
+    	@cart = CartItem.new(cart_item_params)
     	@cart.save
-    	redirect_to ""
+    	redirect_to cart_items_path
     end
 
     def update
@@ -41,7 +40,7 @@ class CartItemsController < ApplicationController
     private
 
     def cart_item_params
-    	params.require(:cart_item).permit(:user_id, :product_id, :price, :count)
+    	params.permit(:user_id, :product_id, :price, :count)
     end
 
 

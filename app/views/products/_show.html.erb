@@ -2,7 +2,7 @@
 	<% index_products.each do |f| %>
 		<%= link_to product_path(f) do %>
 		<div class="productbox">
-			<%= attachment_image_tag f, :image %>
+			<%= attachment_image_tag @product, :image %>
 			<dl>
 				<dt>商品名</dt>
 					<dd><%= f.name %></dd>

@@ -4,7 +4,6 @@
 <%= render 'sidebar', genres: @genres %>
 
 </div>
-
 <div class="container">
 <div class="row">
 <h1 style="font-weight: bold">
@@ -15,6 +14,7 @@
 <h1 style="font-weight: bold">商品一覧<span class="count">
 （全<%= @quantity %>件）
 </span>
+</div>
 
 <%= render "show", product: @product, index_products: @products %>
 

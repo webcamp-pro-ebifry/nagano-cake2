@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @genres = Genre.all
+    @cart_item = CartItem.new
 
   end
 
@@ -21,5 +22,10 @@ class ProductsController < ApplicationController
       @products = Product.all.order(:updated_at).page(params[:page])
       @genres = Genre.all
     end
+  end
+
+    def create
+      @cart_item = CartItem.new
+      @cart_item.save
   end
 end
