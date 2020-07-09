@@ -23,7 +23,7 @@
 <%= @product.introduce %></p>
 </div>
 <div class="col-lg-5">
-<%= @product.price * 1.1.floor %></strong>(税込)</p>
+<%= (@product.price * 1.1).to_i.to_s(:delimited )%></strong>(税込)</p>
 <%= render 'cart', cart_product: @cart_product%>
 
 </div>
