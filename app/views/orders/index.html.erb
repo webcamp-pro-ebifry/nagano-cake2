@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+
+<h2>注文情報確認</h2>
+<%= form_with(model: @order, url: orders_path,method: :post,local: true ) do |f| %>
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+
+  </thead>
+  <tbody>
+    <% i = 0 %>
+    <% @cart_item.each do |cart_item| %>
+    <tr>
+      <td><%= attachment_image_tag cart_item.product.image_id, :image, :fill, 30, 20, fallback: "no_image.jpg" %></td>
+      <td><%= cart_item.product.price %></td>
+      <td><%= cart_item.count %></td>
+      <td><%= cart_item.product.price*cart_item.count %></td>
+      <% i = i + cart_item.product.price*cart_item.count %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!-- 金額 -->
+<table>
+  <thead>
+    <tr>
+      <th>送料</th>
+      <th>商品合計（税込）</th>
+      <th>請求金額</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @orders.postage %></td>
+      <td><%= i %></td>
+      <td>
+        <%= i + @orders.postage %></td>
+    </tr>
+  </tbody>
+</table>
+<h3>支払い方法</h3>
+ <% if @orders.payment_method == true %>
+                  <p>銀行振込</p>
+                    <% else %>
+                  <p>クレジットカード</p>
+                <% end %>
+              </td>
+<h3>お届け先</h3>
+<P><span><%= @orders.postcode %></span>
+<%= @orders.address %></P>
+<%= @orders.name %>
+
+<% end %>
