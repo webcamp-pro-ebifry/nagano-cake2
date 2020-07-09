@@ -1,8 +1,8 @@
 <div class="container">
 	<h2>商品詳細</h2>
-	<div class="row", style="height:400px">
+	<div class="row",>
 		<div class="col-lg-3">
-		<%= attachment_image_tag @product, :image , :fill, 200, 150, fallback: "no_image.jpg"%>
+		<%= attachment_image_tag @product, :image , :fill, 200, 150, fallback: "no_image.jpg", size: '200x150'%>
 		</div>
 		<div class="col-lg-6">
 			<table class="table table-borderless", style="border:none">
@@ -21,7 +21,7 @@
 			    </tr>
 			    <tr>
 			      <th scope="row", style="border:none;">税込価格（税抜価格)</th>
-			      <td colspan="2", style="border:none;"><%= @product.price*1.1%>(<%= @product.price%>)円</td>
+			      <td colspan="2", style="border:none;"><%= (@product.price*1.1).to_i %>(<%= @product.price%>)円</td>
 			    </tr>
 			    <tr>
 			      <th scope="row", style="border:none;">販売ステータス</th>
@@ -30,8 +30,11 @@
 			  </tbody>
 			</table>
 		</div>
-		<div class="col-lg-3", style="bottom:0;">
-			<%= link_to "編集する", edit_admins_product_path, class:"btn btn-primary btn-md btn-block btn-base-1 mt-20　d-flex align-items-end"%>
-		</div>
 	</div>
+		<div class="row">
+			<div class="col-lg-8"></div>
+			<div class="col-lg-3", style="bottom:0;">
+			<%= link_to "編集する", edit_admins_product_path, class:"btn btn-primary btn-md btn-block btn-base-1 mt-20　d-flex align-items-end"%>
+			</div>
+		</div>
 </div>

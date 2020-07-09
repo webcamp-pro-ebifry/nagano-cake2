@@ -1,11 +1,16 @@
 <div class="container">
+		<div class="row">
+			<div class="col-lg-3">
+				<h3>商品編集</h3>
+			</div>
+		</div>	
 		<div class="row", style="height:400px">
 			<div class="col-lg-3">
 				<%= form_for(@product, url: admins_product_path(@product)) do |f| %>
-				<%= attachment_image_tag @product, :image , :fill, 200, 150, fallback: "no_image.jpg"%>
+				<%= attachment_image_tag @product, :image , :fill, 200, 150, fallback: "no_image.jpg", size: '200x150'%>
 				 <%= f.attachment_field :image, placeholder: "" %>
 			</div>
-			<div class="col-lg-7">
+			<div class="col-lg-3">
 				<div>
 					<h4>商品名</h4>
 					<%= f.text_field :name %>
@@ -20,7 +25,7 @@
 				</div>
 				<div>
 					<h4>税込価格</h4>
-					<%= f.text_field :price, class:"form-control" %>
+					<%= f.text_field :price %>
 				</div>
 				<div>
 					<h4>販売ステータス</h4>
@@ -32,3 +37,4 @@
 			</div>
 			<% end %>
 </div>
+
