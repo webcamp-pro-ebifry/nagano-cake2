@@ -17,8 +17,9 @@
     <% i = 0 %>
     <% @cart_item.each do |cart_item| %>
     <tr>
-      <td><%= attachment_image_tag cart_item.product.image_id, :image, :fill, 30, 20, fallback: "no_image.jpg" %></td>
-      <td><%= cart_item.product.price %></td>
+      <td><%= attachment_image_tag cart_item.product, :image ,:fill,60,60,fallback: "no_image.jpg", size: '100x70' %></td>
+          <%#= attachment_image_tag @product, :image ,fallback: "no_image.jpg"%>
+      <td><%= (cart_item.product.price * 1.1).round %></td>
       <td><%= cart_item.count %></td>
       <td><%= cart_item.product.price*cart_item.count %></td>
       <% i = i + cart_item.product.price*cart_item.count %>
@@ -39,9 +40,9 @@
   <tbody>
     <tr>
       <td><%= @orders.postage %></td>
-      <td><%= i %></td>
+      <td><%= (i * 1.1).round %></td>
       <td>
-        <%= i + @orders.postage %></td>
+        <%= (i * 1.1).round + @orders.postage %></td>
     </tr>
   </tbody>
 </table>
