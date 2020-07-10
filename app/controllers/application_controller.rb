@@ -1,15 +1,21 @@
 
 class ApplicationController < ActionController::Base
 	before_action :configure_permitted_parameters, if: :devise_controller?
-	
-
 	def after_sign_in_path_for(resource)
-		flash[:notice] = "successfully"
-		products_path
-	end
+		case resource
+		when Admin
+			root_path
+		when User
+			products_path
+		end
+	end	
 	def after_sign_out_path_for(resource)
-		flash[:notice] = "Signed out successfully."
-    	homes_top_path
+		case resource
+		when Admin
+			new_admin_session_path
+		when User
+			homes_top_path
+		end
   	end
 	protected
 	  def configure_permitted_parameters

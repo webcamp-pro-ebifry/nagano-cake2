@@ -1,3 +1,31 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.count{
+	font-weight: normal;
+	font-size: 25px;
+	padding-left: 10px;
+}
+
+.container{
+	width:100%;
+	text-align: center;
+}
+
+.image{
+	width: 195px;
+	height: 130px;
+}
+
+.products_show_intro{
+	margin-top:100px;
+}
+.pagenation{
+	font-size:15px;
+}
+
+
+
+

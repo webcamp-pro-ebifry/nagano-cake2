@@ -17,6 +17,57 @@
 @import "bootstrap-sprockets";  /*ここを追加*/
 @import "bootstrap";            /*ここを追加*/
 
+.products{
+	display: flex;
+	flex-wrap:wrap;
+	justify-content: center;
+}
+
+.productbox{
+	width: 200px;
+	height: 200px;
+	border: solid 1px #707070;
+	margin:5px;
+	}
+
+.productbox p{
+	font-size:15px;
+}
+.productbox_intro{
+	padding:10px
+}
+
+
 .admin_sessions_new{
 	margin-top:300px;
 }
+
+.products_index{
+	margin-top:100px;
+}
+.genre_serch{
+	margin-top:100px;
+	border:solid 1px #707070;
+}
+
+.genre_serch h2{
+	border-bottom:solid 1px #707070;
+	font-size:20px;
+}
+
+.genre_serch link_to{
+	color: #707070;
+	text-decoration:none;
+}
+
+.about{
+	margin-top:100px;
+}
+
+.glyphicon{
+	margin:0;
+}
+
+
+
+
