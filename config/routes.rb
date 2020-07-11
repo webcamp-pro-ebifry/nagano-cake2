@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   devise_for :admins, controllers:{
   	sessions: 'admins/sessions'
   }
+  resource :users, only:[:show ,:edit,:update,:destroy]
   devise_for :users
 
-  resources :users, only:[:show ,:edit,:update]
   get 'users/withdrawal' => 'users#withdrawal'
+  resource :users, only:[:show ,:edit,:update,:destroy]
 
   get 'homes/top' => 'homes#top'
   get 'homes/about' => 'homes#about'
