@@ -39,23 +39,44 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= @orders.postage %></td>
+      <td><%= @order.postage %></td>
       <td><%= (i * 1.1).round %></td>
       <td>
-        <%= (i * 1.1).round + @orders.postage %></td>
+        <%= (i * 1.1).round + @order.postage %></td>
     </tr>
   </tbody>
 </table>
 <h3>支払い方法</h3>
- <% if @orders.payment_method == true %>
+ <% if @order.payment_method == true %>
                   <p>銀行振込</p>
                     <% else %>
                   <p>クレジットカード</p>
                 <% end %>
               </td>
 <h3>お届け先</h3>
-<P><span><%= @orders.postcode %></span>
-<%= @orders.address %></P>
-<%= @orders.name %>
+<P><span><%= @order.postcode %></span>
+<%= @order.address %></P>
+<%= @order.name %>
+<% end %>
+
+<!-- よくわかってない -->
+<%= form_with(model: @order, url:orders_path, method: :post, local: true) do |f| %>
+
+  <% i = 0 %>
+  <% @cart_item.each do |cart_item| %>
+  <% i = i + cart_item.product.price*cart_item.count %>
+  <% end %>
+
+
+  <%= f.hidden_field :postage, :value => @order.postage %>
+  <%= f.hidden_field :payment, :value => (i * 1.1).round + @order.postage%>
+  <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+  <%= f.hidden_field :name, :value => @order.name %>
+  <%= f.hidden_field :postcode, :value => @order.postcode %>
+  <%= f.hidden_field :address, :value => @order.address %>
+  <%= f.submit "購入を確定する", class: 'btn btn-success btn-lg' %>
+
+
+
 
 <% end %>

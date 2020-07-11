@@ -1,22 +1,29 @@
 Rails.application.routes.draw do
 
+  devise_for :users
 
-  namespace :admins do
-   resources :users, only: [:index,:show,:edit,:update]
-  end
- 
   resource :users, only:[:show ,:edit,:update]
    get 'users/withdrawal' => 'users#withdrawal'
 
-  resource :users
+  resources :order_details, only: [:index,:show,:update]
 
-  resources :orders
+  namespace :admins do
+   resources :orders, only: [:top,:index,:show,:update]
+  end
+  namespace :admins do
+   resources :users, only: [:index,:show,:edit,:update]
+  end
+
+
+  resources :orders,only:[:new,:create]
+  post "orders/index" => "orders#index"
+  get "orders/fin" => "orders#fin"
 
 
   devise_for :admins, controllers:{
   	sessions: 'admins/sessions'
   }
-  devise_for :users
+
 
 
   get 'homes/top' => 'homes#top'

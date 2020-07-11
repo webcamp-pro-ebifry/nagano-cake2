@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
- 
+  
   # GET /orders/new
   def new
     @order = Order.new
@@ -11,55 +10,56 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.new(order_params)
+    @order = Order.new(order_params)
     @user = current_user
     @cart_item = @user.cart_items.all
   if params[:address] == "1"
-      @orders.name = current_user.lastname + current_user.firstname
-      @orders.postcode = current_user.postal_code
-      @orders.address = current_user.address
+      @order.name = current_user.lastname + current_user.firstname
+      @order.postcode = current_user.postal_code
+      @order.address = current_user.address
     elsif params[:address] == "2"
-      @orders.name = ShippingAddress.find(params[:order][:select_address].to_i).name
-      @orders.postcode = ShippingAddress.find(params[:order][:select_address].to_i).postcode
-      @orders.address = ShippingAddress.find(params[:order][:select_address].to_i).address
+      @order.name = ShippingAddress.find(params[:order][:select_address].to_i).name
+      @order.postcode = ShippingAddress.find(params[:order][:select_address].to_i).postcode
+      @order.address = ShippingAddress.find(params[:order][:select_address].to_i).address
     elsif params[:address] == "3"
       # 住所の登録を行う。注文確定の時に入れたほうがいい。
       @shipping = ShippingAddress.new(address_params)
       @shipping.user_id = current_user.id
       @shipping.save
       # 登録された住所を、オーダーモデルのカラムに格納する
-      @orders.name = @shipping.name
-      @orders.postcode = @shipping.postcode
-      @orders.address = @shipping.address
+      @order.name = @shipping.name
+      @order.postcode = @shipping.postcode
+      @order.address = @shipping.address
     end
 
-  end
-
-  # GET /orders/1
-  # GET /orders/1.json
-  def show
-  end
-
-
-
-  # GET /orders/1/edit
-  def edit
   end
 
   # POST /orders
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+    @order.user_id = current_user.id
+    if @order.save
+       @cart_items = current_user.cart_items
+       @cart_items.each do |f|
+        order_detail = OrderDetail.new
+        order_detail.count = f.count
+        order_detail.price = (f.product.price * 1.1) * f.count
+        order_detail.order_id = @order.id
+        order_detail.product_id = f.product_id
+        order_detail.save
       end
+      @cart_items.destroy_all
+      redirect_to orders_fin_path
+    else
+      @order = Order.new
+      @shipping = ShippingAddress.new
+      @address = curre  @order.customer_id = current_customer.idnt_useer.delivers.all
+      render :new
     end
+  end
+
+  def fin
   end
 
   # PATCH/PUT /orders/1
@@ -88,10 +88,6 @@ class OrdersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
-
 
     # Only allow a list of trusted parameters through.
     def order_params
