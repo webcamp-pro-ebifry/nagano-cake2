@@ -9,32 +9,29 @@ class CartItemsController < ApplicationController
     end
 
     def create
-    	@cart = CartItem.new
-    	@cart.user_id = current_user.id
+    	@cart = CartItem.new(cart_item_params)
     	@cart.save
-    	redirect_to ""
+    	redirect_to cart_items_path
     end
 
     def update
-    	@cart =CartItem.find(params[:id])
-    	@cart.update(cart_item_params)
-    	@user = current_user
-    	redirect_to ""
+    	@cart_item =CartItem.find(params[:id])
+    	@cart_item.update(cart_item_params)
+    	@user = User.find(current_user.id)
+    	redirect_to cart_items_path
     end
 
     def destroy
     	@cart = CartItem.find(params[:id])
-    	 if @cart.destroy
-    	    redirect_to ""
-    	 else
-    	 	render cart_items_path
-    	 end
+        @cart.destroy
+    	redirect_back(fallback_location: cart_items_path)
     end
 
     def destroy_all
-    	@user = User.find(cuurent_user.id)
+    	@user = User.find(current_user.id)
     	if @user.cart_items.destroy_all
     		flash[:notice] = "カートの商品を全て削除しました"
+    		redirect_back(fallback_location: cart_items_path)
     	else
     		render 'cart_items_path'
     	end
@@ -44,7 +41,7 @@ class CartItemsController < ApplicationController
     private
 
     def cart_item_params
-    	params.require(:cart_item).permit(:user_id, :product_id, :price, :count)
+    	params.permit(:user_id, :product_id, :price, :count)
     end
 
 

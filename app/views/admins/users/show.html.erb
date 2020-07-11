@@ -1,0 +1,42 @@
+<h1>Admins::Users#show</h1>
+<p>Find me in app/views/admins/users/show.html.erb</p>
+<div class="container">
+	<h2><%= @user.firstname %><%= @user.lastname %>さんの会員情報</h2>
+
+	<div class="row">
+	<table>
+		<tr>
+			<th>顧客ID</th>
+			<th><%= @user.id %>ステータス</th>
+		</tr>
+		<tr>
+			<th>氏名</th>
+			<th><%= @user.firstname %><%= @user.lastname %></th>
+		</tr>
+		<tr>
+			<th>フリガナ</th>
+			<th><%= @user.firstname_ruby %><%= @user.lastname_ruby %></th>
+		</tr>
+		<tr>
+			<th>郵便番号</th>
+			<th><%= @user.postal_code %></th>
+		</tr>
+		<tr>
+			<th>住所</th>
+			<th><%= @user.address %></th>
+		</tr>
+		<tr>
+			<th>電話番号</th>
+			<th><%= @user.phone_number %></th>
+		</tr>
+		<tr>
+			<th>メールアドレス</th>
+			<th><%= @user.email %></th>
+		</tr>
+	</table>
+	</div>
+	<div class="row">
+		<%= link_to "編集する",edit_admins_user_path(@user.id) %>
+		<!--  注文履歴一覧も入れる　-->
+	</div>
+</div>

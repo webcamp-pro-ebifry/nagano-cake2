@@ -1,0 +1,29 @@
+<% provide(:title, "商品詳細") %>
+<div class="sidebar">
+<%= render 'sidebar', genres: @genres %>
+
+</div>
+
+
+<% if flash[:notice] %>
+	<div class="alert alert-info text-center">
+			<%= flash[:notice] %>
+	</div>
+<% end %>
+<div class="container">
+
+<div class="col-lg-5">
+<%= attachment_image_tag @product, :image %>
+</div>
+<div class="col-lg-5">
+<h1 class="pull-left" style="font-weight: bold; margin-top:100px;">
+<%= @product.name%></h1>
+</div>
+<div class="col-lg-5">
+<%= @product.introduce %></p>
+</div>
+<div class="col-lg-5">
+<%= @product.price * 1.1.floor %></strong>(税込)</p>
+<%= render 'cart', cart_product: @cart_product%>
+
+</div>

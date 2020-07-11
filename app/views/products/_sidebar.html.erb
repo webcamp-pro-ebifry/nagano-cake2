@@ -1,0 +1,4 @@
+<h3>ジャンル検索</h3>
+    <% genres.each do |genre| %>
+        <p><%= link_to genre.name, edit_admins_genre_path(genre) %></P>
+    <% end %>
