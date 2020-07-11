@@ -1,5 +1,6 @@
 <div class="products">
 	<% index_products.each do |f| %>
+	
 		<%= link_to product_path(f) do %>
 		<div class="productbox">
 			<%= attachment_image_tag f, :image ,:fill,100,70,fallback: "no_image.jpg", size: '100x70' %>
@@ -9,6 +10,6 @@
 			<p>¥<%= f.price %></p>
 		</div>
 		</div>
-	<% end %>
 	
+	<% end %>
 </div>

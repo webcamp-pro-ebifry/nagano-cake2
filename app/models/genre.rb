@@ -6,4 +6,7 @@ class Genre < ApplicationRecord
       },_prefix: true
 
      has_many :products, dependent: :destroy
+
+
+
 end

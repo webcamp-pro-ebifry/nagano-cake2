@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  get 'genres/show'
   namespace :admins do
    resources :users, only: [:index,:show,:edit,:update]
   end
