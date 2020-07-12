@@ -16,7 +16,7 @@
 				<tr>
 					<td><%= attachment_image_tag f.product, :image, style:"width: 100px; bottom: 5px;" %><%=f.product.name%></td>
 					<td><%=(f.product.price * 1.1).round %></td>
-					<%= form_for f, url: cart_items_path(f.id) do |cart_item|%>
+					<%= form_for f, url: cart_item_path(f.id) do |cart_item|%>
 					<td>
 						<%=cart_item.select :count,(1..10).each{ |i| p [i]} %>
 						<%= cart_item.submit '変更', class: "btn-sm btn-success"%>
@@ -24,7 +24,7 @@
 					<td><%= (f.product.price * 1.1 *f.count).to_i.to_s(:delimited )%>円
 					</td>
 					<% end %>
-					<td><%= link_to "削除する", cart_items_path(f.id), method: :delete, data: { confirm:"Are you sure?"},  class: "btn-sm btn-danger"%>
+					<td><%= link_to "削除する", cart_item_path(f.id), method: :delete, data: { confirm:"Are you sure?"},  class: "btn-sm btn-danger"%>
 
 					</td>
 				</tr>
