@@ -63,17 +63,20 @@
 <%= form_with(model: @order, url:orders_path, method: :post, local: true) do |f| %>
 
   <% i = 0 %>
+  <%# c = 0 %>
   <% @cart_item.each do |cart_item| %>
   <% i = i + cart_item.product.price*cart_item.count %>
+  <%# c = c + cart_item.count %>
   <% end %>
 
 
   <%= f.hidden_field :postage, :value => @order.postage %>
-  <%= f.hidden_field :payment, :value => (i * 1.1).round + @order.postage%>
+  <%= f.hidden_field :payment, :value => (i * 1.1).round + @order.postage %>
   <%= f.hidden_field :payment_method, :value => @order.payment_method %>
   <%= f.hidden_field :name, :value => @order.name %>
   <%= f.hidden_field :postcode, :value => @order.postcode %>
   <%= f.hidden_field :address, :value => @order.address %>
+  <%#= f.hidden_field :count(order_details_path), :value => c %>
   <%= f.submit "購入を確定する", class: 'btn btn-success btn-lg' %>
 
 

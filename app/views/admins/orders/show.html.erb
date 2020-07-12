@@ -4,7 +4,7 @@
 <table>
 	<tr>
 		<td>購入者</td>
-		<td><%= @orders.user.lastname %><%= @orders.user.firstname %></td>
+		<td><%= @orders.user.firstname %><%= @orders.user.lastname %></td>
 	</tr>
 	<tr>
 		<td>配送先</td>
@@ -27,8 +27,8 @@
 	<tr>
 		<td>注文ステータス</td>
 		<td>
-			<%= form_with(model: @orders,url:admins_order_path,method: :patch) do |f| %>
-			<%= f.select :status, Order.statuses.keys.to_a {} %>
+			<%= form_with(model: @order,url:admins_order_path,method: :patch) do |f| %>
+			<%= f.select :status, Order.statuses.keys.to_a {},selected: @orders.status%>
             <%= f.submit "更新"%>
             <% end %>
 		</td>
@@ -55,8 +55,8 @@
                 <%= order_detail.price * order_detail.count  %>
 			</td>
 			<td>
-				<%= form_with(model: @orders_detail,url: order_detail_path, method: :patch) do |f| %>
-				<%= f.select :status, OrderDetail.statuses.keys.to_a {} %>
+				<%= form_with(model: order_detail,url: admins_order_detail_path(order_detail), method: :patch, local: true ) do |f| %>
+				<%= f.select :status, OrderDetail.statuses.keys.to_a {} ,selected: order_detail.status%>
 				<!-- OrderDetail.statusesでenumを読んでkeysを指定すると、enumのkeyの部分である「着手不可」が持ってこれる。to_aはアレイと言う配列を作る -->
             	<%= f.submit "更新"%>
             	<% end %>

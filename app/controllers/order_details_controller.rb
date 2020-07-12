@@ -13,10 +13,10 @@ class OrderDetailsController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+ 
   def update
-
   end
-  # DELETE /order_details/1
+
 
   private
     def order_status_params
