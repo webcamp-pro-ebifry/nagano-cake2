@@ -15,7 +15,9 @@ class HomesController < ApplicationController
 	    else
 	      @products = Product.all.order(:updated_at).page(params[:page]).per(4)
 	      @genres = Genre.where(status:"有効")
-	    end		
+	    end
+	end
+	def about
 	end
 	def about
 	end

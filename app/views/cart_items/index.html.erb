@@ -2,7 +2,7 @@
 	<div class="row">
 		<div>
 			<h4>ショッピングカート</h4>
-			<%= link_to "カートを空にする"%>
+			<%= link_to "カートを空にする", cart_items_destroy_all_path(@cart_item), method: :delete, data: { confirm: "Are you sure?"}, class: "btn-sm btn-danger"%>
 		</div>
 			<table>
 				<tr>
@@ -14,16 +14,18 @@
 				</tr>
 				<% @cart_items.each do |f| %>
 				<tr>
-					<td><%= attachment_image_tag @product, :image %><%=f.product.name%></td>
+					<td><%= attachment_image_tag f.product, :image, style:"width: 100px; bottom: 5px;" %><%=f.product.name%></td>
 					<td><%=(f.product.price * 1.1).round %></td>
 					<%= form_for f, url: cart_items_path(f.id) do |cart_item|%>
-					<td><%=cart_item.number_field :count %>
+					<td>
+						<%=cart_item.select :count,(1..10).each{ |i| p [i]} %>
 						<%= cart_item.submit '変更', class: "btn-sm btn-success"%>
 					</td>
 					<td><%= (f.product.price * 1.1 *f.count).to_i.to_s(:delimited )%>円
 					</td>
 					<% end %>
 					<td><%= link_to "削除する", cart_items_path(f.id), method: :delete, data: { confirm:"Are you sure?"},  class: "btn-sm btn-danger"%>
+
 					</td>
 				</tr>
 				<% end %>

@@ -15,7 +15,7 @@ before_action :authenticate_user!
 	end
 
 	def update
-		@user = User.find(current_user.id)
+		@user = current_user
 		if @user.update(user_params)
 			if user_signed_in?
 				flash[:notice] = "登録情報が更新されました。"
@@ -46,7 +46,7 @@ before_action :authenticate_user!
 
 	private
 	def user_params
-		params.require(:user).permit(:firstname, :lastname, :firstname_ruby, :lastname_ruby, :email, :postal_code, :address, :phone_number)
+		params.require(:user).permit(:firstname, :lastname, :firstname_ruby, :lastname_ruby, :email, :postal_code, :address, :phone_number, :is_valid,:reset_password_token, :password, :password_confirmation)
 	end
 end
 

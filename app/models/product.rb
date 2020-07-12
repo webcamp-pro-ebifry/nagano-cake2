@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+
     belongs_to :genre
 
     enum product_status: {
@@ -18,4 +19,5 @@ class Product < ApplicationRecord
     has_many :cart_items
 
     #paginates_per 8
+
 end

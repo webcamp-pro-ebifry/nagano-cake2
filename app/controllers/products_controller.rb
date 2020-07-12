@@ -24,6 +24,7 @@ class ProductsController < ApplicationController
       @products = @p.page(params[:page]).per(8)
       @genres = Genre.where(status: "有効")
       @quantity = @p.count
+
     end
   end
 
