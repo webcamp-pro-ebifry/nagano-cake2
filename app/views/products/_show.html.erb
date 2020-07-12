@@ -1,14 +1,15 @@
-	<div class="products">
+<div class="products">
 	<% index_products.each do |f| %>
+
 		<%= link_to product_path(f) do %>
 		<div class="productbox">
-			<%= attachment_image_tag f, :image ,:fill,60,60,fallback: "no_image.jpg", size: '100x70' %>
+			<%= attachment_image_tag f, :image ,:fill,100,70,fallback: "no_image.jpg", size: '100x70' %>
 		<% end %>
-		<dl>
-				<dt>商品名</dt>
-					<dd><%= f.name %></dd>
-				<dt>価格</dt>
-				<dd><%= f.price %>円</dd>
-			</dl>
+		<div class="productbox_intro">
+			<p><%= f.name %></p>
+			<p>¥<%= f.price %></p>
 		</div>
+		</div>
+
 	<% end %>
+</div>

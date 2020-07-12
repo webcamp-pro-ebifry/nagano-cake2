@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 before_action :authenticate_user!
- def show
+    def show
 		@user = current_user
 	end
 
@@ -40,6 +40,7 @@ before_action :authenticate_user!
 
 	private
 	def user_params
+
 		params.require(:user).permit(:firstname, :lastname, :firstname_ruby, :lastname_ruby, :email, :postal_code, :address, :phone_number, :is_valid,:reset_password_token, :password, :encrypted_password)
 	end
 end

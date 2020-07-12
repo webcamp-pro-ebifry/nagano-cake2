@@ -11,32 +11,38 @@
 
   <body>
 
-<header>
-  <nav>
-    <ul>
-      <% if user_signed_in? %>
-        <li><%= link_to "マイページ", homes_top_path %></li>
-        <li><%= link_to "カート", homes_top_path %></li>
-        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-      <% elsif admin_signed_in? %>
-        <li><%= link_to "商品一覧", admins_products_path %></li>
-        <li><%= link_to "会員一覧", admins_users_path %></li>
-        <li><%= link_to "注文履歴一覧", homes_top_path %></li>
-        <li><%= link_to "ジャンル一覧", admins_genres_path %></li>
-        <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-      <% else %>
+    <header id="header" class="">
+      <nav class="navbar navbar-dark bg-dark">
+        <%= image_tag "shrimp.jpg", alt: "えび", id: "ebi", width: "40px" %>
+      <ul class="nav navbar-nav navbar-right">
+        <!--if文でサインインとアウト時の表示を変更-->
+        <% if user_signed_in? && admin_signed_in? %>
+        <li><%= link_to ' 商品一覧', products_path, class: 'glyphicon glyphicon-user users' %></li>
+        <li><%= link_to ' 会員一覧', admins_users_path, class: 'glyphicon glyphicon-user users' %></li>
+        <li><%= link_to ' 注文履歴一覧', root_path, class: 'glyphicon glyphicon-book books' %></li>
+        <li><%= link_to ' ジャンル一覧', admins_genres_path, class: 'glyphicon glyphicon-home home' %></li>
+        <li><%= link_to ' ログアウト', destroy_admin_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="検索キーワード">
+          </div>
+          <button type="submit" class="btn btn-default">検索</button>
+        </form>
+        <% elsif user_signed_in? %>
+        <li><%= link_to ' マイページ', homes_about_path, class: 'glyphicon glyphicon-home home' %></li>
+        <li><%= link_to ' 商品一覧', products_path, class: 'glyphicon glyphicon-link about' %></li>
+        <li><%= link_to ' カート', cart_items_path, class: 'glyphicon glyphicon-edit sign_up' %></li>
+        <li><%= link_to ' ログアウト', destroy_user_session_path, class: 'glyphicon glyphicon-log-in sign_in' %></li>
+        <% else %>
+        <li><%= link_to ' About', homes_about_path, class: 'glyphicon glyphicon-home home' %></li>
+        <li><%= link_to ' 商品一覧', products_path, class: 'glyphicon glyphicon-link about' %></li>
+        <li><%= link_to ' 新規登録', new_user_registration_path, class: 'glyphicon glyphicon-edit sign_up' %></li>
+        <li><%= link_to ' ログイン', new_admin_session_path, class: 'glyphicon glyphicon-log-in sign_in' %></li>
+        <% end %>
+      </ul>
+    </nav>
+ </header>
 
-        <li><%= link_to "About", homes_about_path %></li> 
-     <!-- 一旦ログイン画面に遷移するようにしてます -->
-        <li><%= link_to "商品一覧", new_user_registration_path %></li>
-      <!--  -->
-        <li><%= link_to "新規登録", new_user_registration_path %></li>
-        <li><%= link_to "ログイン", new_user_session_path %></li>
-        <li><%= link_to "管理者はコチラ", new_admin_session_path %></li>
-      <% end %>
-    </ul>
-  </nav>
-</header>
 
     <%= yield %>
   </body>

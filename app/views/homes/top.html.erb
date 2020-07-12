@@ -1,17 +1,24 @@
-top page
- <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <!--if文でサインインとアウト時の表示を変更-->
-            <% if user_signed_in? %>
-            <li><%= link_to ' home',  class: 'glyphicon glyphicon-home home' %></li>
-            <li><%= link_to ' users', class: 'glyphicon glyphicon-user users' %></li>
-            <li><%= link_to ' books',  class: 'glyphicon glyphicon-book books' %></li>
-            <li><%= link_to ' logout', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
-            <% else %>
-            <li><%= link_to ' home', root_path, class: 'glyphicon glyphicon-home home' %></li>
-            <li><%= link_to ' about',  class: 'glyphicon glyphicon-link about' %></li>
-            <li><%= link_to ' Sign Up', new_user_registration_path, class: 'glyphicon glyphicon-edit sign_up' %></li>
-            <li><%= link_to ' login', new_user_session_path, class: 'glyphicon glyphicon-log-in sign_in' %></li>
-            <% end %>
-          </ul>
-        </nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="sidebar">
+            <%= render 'products/sidebar', genres: @genres %>
+            </div>
+        </div>
+        <div class="col-lg-10">
+            <div>
+                <p>ようこそ、NaganoCakeへ！<br>
+                このサイトは、ケーキ販売のECサイトになります。<br>
+                会員でない方も商品の閲覧はできますが、<br>
+                購入には会員登録が必要になります。</p>
+                <%= image_tag "sweets.jpg", alt: "Rails icon", id: "assets", width: "500px" %>
+            </div>
+            <div>
+                 <h2 class="heading">オススメ商品</h2>
+                 <div id="article_lists"><%= render 'more', index_products: @products  %></div>
+                 <%= link_to 'もっと見る>', products_path, class:"more-btn" %>
+            </div>
+        </div>
+    </div>
+</div>
