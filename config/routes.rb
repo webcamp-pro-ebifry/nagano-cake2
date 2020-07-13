@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
+
+  get 'users/withdrawal' => 'users#withdrawal'
+  resource :users, only:[:show ,:edit,:update,:destroy]
+
   devise_for :users
 
-  resource :users, only:[:show ,:edit,:update]
-   get 'users/withdrawal' => 'users#withdrawal'
 
   resources :order_details, only: [:index,:show,:update]
 
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
 
 
   devise_for :admins, controllers:{
-  	sessions: 'admins/sessions'
+    sessions: 'admins/sessions'
   }
 
   get 'homes/top' => 'homes#top'

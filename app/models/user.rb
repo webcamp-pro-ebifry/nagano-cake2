@@ -9,4 +9,5 @@ class User < ApplicationRecord
 
   has_many :shipping_addresses
 
+  acts_as_paranoid
 end
