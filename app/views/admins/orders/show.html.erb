@@ -1,0 +1,90 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-9">
+			<h2>注文履歴詳細</h2><br><br>
+			<table class="table">
+				<tr>
+					<td>購入者</td>
+					<td><%= @orders.user.lastname %><%= @orders.user.firstname %></td>
+				</tr>
+				<tr>
+					<td>配送先</td>
+					<td>
+						<%= @orders.postcode %>
+						<%= @orders.address %>
+						<%= @orders.name %>
+					</td>
+				</tr>
+				<tr>
+					<td>支払い方法</td>
+					<td>
+						<% if @orders.payment_method == true %>
+			                  <p>銀行振込</p>
+			                    <% else %>
+			                  <p>クレジットカード</p>
+			            <% end %>
+					</td>
+				</tr>
+				<tr>
+					<td>注文ステータス</td>
+					<td>
+						<%= form_with(model: @orders,url:admins_order_path,method: :patch) do |f| %>
+						<%= f.select :status, Order.statuses.keys.to_a {} %>
+			            <%= f.submit "更新", class:"btn btn-primary"%>
+			            <% end %>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="col-lg-3"></div>
+	</div>
+	<br><br><br><br><br><br>
+	<div class="row">
+		<div class="col-lg-9">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>商品名</th>
+						<th>単価（税込)</th>
+						<th>数量</th>
+						<th>小計</th>
+						<th>制作ステータス</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @orders.order_details.each do |order_detail|%>
+					<tr>
+						<td><%= order_detail.product.name %></td>
+						<td><%= order_detail.price %></td>
+						<td><%= order_detail.count %></td>
+						<td>
+			                <%= order_detail.price * order_detail.count  %>
+						</td>
+						<td>
+							<%= form_with(model: @orders_detail,url: order_detail_path, method: :patch) do |f| %>
+							<%= f.select :status, OrderDetail.statuses.keys.to_a {} %>
+							<!-- OrderDetail.statusesでenumを読んでkeysを指定すると、enumのkeyの部分である「着手不可」が持ってこれる。to_aはアレイと言う配列を作る -->
+			            	<%= f.submit "更新", class:"btn btn-primary"%>
+			            	<% end %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-lg-3 order-sum">
+			<br><br>
+			<p><span>商品合計</span><%= @orders.payment - @orders.postage %>円<br><br>
+			<span>送料</span><%= @orders.postage %>円<br><br>
+			<span>請求金額合計</span><%= @orders.payment %>円</p>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+

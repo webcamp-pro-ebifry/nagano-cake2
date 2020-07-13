@@ -14,14 +14,14 @@
 <table class="table", style="border:none;">
     <tr>
       <th style="border:none;">メールアドレス</th>
-      
+
       <td style="border:none;">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
       <td>
-    </tr>  
+    </tr>
     <tr>
       <th style="border:none;">パスワード（６字以上）</th>
-    
+
       <td style="border:none;">
         <%= f.password_field :password, autocomplete: "new-password" %>
       </td>
@@ -29,7 +29,7 @@
     <tr>
       <th style="border:none;"></th>
       <td style="border:none;"><%= f.submit "ログイン", class: "btn btn-info" %></td>
-    </tr>  
+    </tr>
 </table>
 <% end %>
 </div>
