@@ -33,7 +33,7 @@ ECサイトと管理サイトにわかれており<br>
 ### 使用方法
 管理者はseedsファイルに<br>
 お試しが入っております<br>
-email: test@test.com<br>
+email: 'test@test.com'<br>
 password: 'testtest'<br>
 でログインできます<br>
 顧客は新規登録ページ→サインアップ<br>
