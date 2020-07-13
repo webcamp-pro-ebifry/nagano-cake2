@@ -43,17 +43,17 @@ password: 'testtest'<br>
 ---
 
 ### 使用言語
-HTML | <br>
-CSS(SCSS) | <br>
-JavaScript | <br>
+HTML<br>
+CSS(SCSS)<br>
+JavaScript<br>
 Ruby on Rails
 ---
 
 ### ナイスなGEM
-devise | <br>
-refile | <br>
-kaminari | <br>
-jquery-rails | <br>
+devise<br>
+refile<br>
+kaminari<br>
+jquery-rails<br>
 bootstrap<br>
 paranoia
 ---
