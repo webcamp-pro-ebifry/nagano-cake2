@@ -1,10 +1,15 @@
-<div class="container">
+<div class="container cart">
 	<div class="row">
+		<div class="col-lg-10 cart1">
+			<span>ショッピングカート</span>
+		</div class="col-lg-2">
 		<div>
-			<h4>ショッピングカート</h4>
 			<%= link_to "カートを空にする", cart_items_destroy_all_path(@cart_item), method: :delete, data: { confirm: "Are you sure?"}, class: "btn-sm btn-danger"%>
 		</div>
-			<table>
+	</div>
+	<div class="row">
+		<div class="col-lg-10">
+			<table class="table">
 				<tr>
 					<th>商品名</th>
 					<th>単価(税込)</th>
@@ -14,7 +19,7 @@
 				</tr>
 				<% @cart_items.each do |f| %>
 				<tr>
-					<td><%= attachment_image_tag f.product, :image, style:"width: 100px; bottom: 5px;" %><%=f.product.name%></td>
+					<td><%= attachment_image_tag f.product, :image, style:"width: 100px; height: 70px; bottom: 5px;" %><%=f.product.name%></td>
 					<td><%=(f.product.price * 1.1).round %></td>
 					<%= form_for f, url: cart_item_path(f.id) do |cart_item|%>
 					<td>
@@ -30,17 +35,22 @@
 				</tr>
 				<% end %>
 			</table>
+		</div>
 	</div>
 	<div class="row">
-		<%= link_to "買い物を続ける" ,products_path %>
+		<div class="col-lg-10">
+		<%= link_to "買い物を続ける" ,products_path, class: "btn-sm btn-success" %>
+		</div>
+		<div class="col-lg-2 cart-index">
+					<span>合計金額</span>
+					<div><%=(@total_price * 1.1).round %>円</div>
+		</div>
 	</div>
-	<table>
-		<tr>
-			<th>合計金額</th>
-			<th><%=(@total_price * 1.1).round %>円</th>
-		</tr>
-	</table>
-	<div>
-		<%= link_to "情報入力に進む",new_order_path %>
+	<div class="row">
+		<div class="col-lg-5"></div>
+		<div class="col-lg-2">
+		<%= link_to "情報入力に進む",new_order_path, class: "btn-lg btn-success" %>
+		</div>
+		<div class="col-lg5"></div>
 	</div>
 </div>

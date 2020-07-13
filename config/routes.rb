@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get 'homes/top' => 'homes#top'
   get 'homes/about' => 'homes#about'
   root 'homes#top'
+  get 'admins/homes/top' => 'admins/homes#top'
 
   resources :shipping_addresses , only: [:index, :create, :edit, :update, :destroy]
 
