@@ -5,8 +5,8 @@
 			</div>
 		</div>	
 		<div class="row", style="height:400px">
-			<div class="col-lg-3">
 				<%= form_for(@product, url: admins_product_path(@product)) do |f| %>
+			<div class="col-lg-3">
 				<%= attachment_image_tag @product, :image , :fill, 200, 150, fallback: "no_image.jpg", size: '200x150'%>
 				 <%= f.attachment_field :image, placeholder: "" %>
 			</div>
@@ -33,8 +33,9 @@
 				</div>
 			</div>
 			<div class="col-lg-2">
-			<%= f.submit "変更を保存する", class: "btn btn-info" %>
+			<%= f.submit "変更を保存する" %>
 			</div>
 			<% end %>
+	</div>
 </div>
 

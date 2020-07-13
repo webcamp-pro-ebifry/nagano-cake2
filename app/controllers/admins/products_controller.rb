@@ -13,7 +13,7 @@ class Admins::ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.save(name: params[:product][:name], status: params[:product][:genre_id].to_i, status: params[:product][:product_status].to_i) 
       flash[:notice] = "successfully"
-      redirect_to admins_products_path(@product)
+      redirect_to admins_product_path(@product)
     else
       render :new
     end
@@ -39,9 +39,6 @@ class Admins::ProductsController < ApplicationController
   	@product = Product.find(params[:id])
   end
 
-  def show
-  	@product = Product.find(params[:id])
-  end
 
   private
   def product_params

@@ -7,8 +7,7 @@
 <h3>商品一覧</h3>
 
 <%= flash[:notice] %>
-
-<%= link_to "+", new_admins_product_path, class:"btn btn-default btn-circle" %>
+<%= link_to "+", new_admins_product_path, class:"btn btn-default btn-circle marubtn" %>
 
 <table class="table table-borderless">
 	<thead class="thead-dark">
@@ -25,7 +24,7 @@
 		<% @products.each do |product| %>
 			<tr>
 				<td><%= product.id %></td>
-				<td>
+				<td class="admin-products-td">
                 	<%= link_to admins_product_path(product.id) do %>
 					<%= product.name %>
 					<% end %>
@@ -39,7 +38,9 @@
 		<% end %>
 	</tbody>
 </table>
+<div class="page">
 <%= paginate @products %>
+</div>
 </div>
 </div>
 </div>

@@ -2,9 +2,9 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-1"></div>
-    <div class="col-lg-8">
       <h2>新規登録</h2>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="col-lg-8">
       <%= render "devise/shared/error_messages", resource: resource %>
       <table class="table", style="border:none;">
       <tr>
@@ -70,7 +70,6 @@
     </table>
     </div>
     <div class="col-lg-1"></div>
-  </div>
   <div class="row">
     <div class="col-lg-5"></div>
     <div class="col-lg-3">
@@ -83,8 +82,7 @@
     <h2>既に登録済みの方　</h2>
     <p><%= link_to "こちら", new_session_path(resource_name) %>　からログインしてください。</p>
   </div>
-</div>
-</div>
+  </div>
 <% end %>
 
 

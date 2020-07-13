@@ -24,7 +24,7 @@
 		<% @users.each do |user| %>
 			<tr>
 				<td><%= user.id %></td>
-				<td>
+				<td class="users-name">
                 	<%= link_to admins_user_path(user.id) do %>
 					<%= user.firstname %>
 					<%= user.lastname %>
