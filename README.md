@@ -1,6 +1,5 @@
 [スライド](https://gitpitch.com/webcamp-pro-ebifry/nagano-cake2)
 ---
-
 ### このアプリケーションについて
 ご覧いただきありがとうございます。<br>
 こちらはDMMWEBCAMPカリキュラム内で<br>
@@ -45,24 +44,24 @@ password: 'testtest'<br>
 ---
 
 ### 使用言語
-HTML<br>
-CSS(SCSS)<br>
-JavaScript<br>
-Ruby on Rails
+・HTML<br>
+・CSS(SCSS)<br>
+・JavaScript<br>
+・Ruby on Rails
 ---
 
 ### ナイスなGEM
-devise<br>
-refile<br>
-kaminari<br>
-jquery-rails<br>
-bootstrap<br>
-paranoia
+・devise<br>
+・refile<br>
+・kaminari<br>
+・jquery-rails<br>
+・bootstrap<br>
+・paranoia
 ---
 
 ### 作者
-森田悠介<br>
-仲佐祐德<br>
-檜澤ゆい<br>
-福田敦也
+・森田悠介<br>
+・仲佐祐德<br>
+・檜澤ゆい<br>
+・福田敦也
 ---
