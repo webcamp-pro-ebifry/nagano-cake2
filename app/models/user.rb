@@ -6,5 +6,9 @@ class User < ApplicationRecord
 
 
   has_many :cart_items, dependent: :destroy
+
   has_many :shipping_addresses
+
+  acts_as_paranoid
+
 end

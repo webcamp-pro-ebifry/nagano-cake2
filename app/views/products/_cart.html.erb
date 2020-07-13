@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-	<%= form_for  :cart_item ,url:cart_items_path, method: :post ,local: true do |f| %>
+	<%= form_for :cart_item, url:cart_items_path, method: :post ,local: true do |f| %>
 		<%= f.select :count,(1..10).each{ |i| p [i] } ,includece_blank: ">>　個数選択"%>
 		<%= f.hidden_field :product_id, value: @product.id %>
 		<%= f.hidden_field :user_id, value: current_user.id %>

@@ -1,0 +1,61 @@
+<div class="row">
+<div class="col-lg-10 col-lg-offset-1">
+<%= form_for(@user, url: users_path(@user)) do |f| %>
+<table class="edit_users table">
+ <% if flash[:alert] %>
+ <div class="alert alert-danger">
+ <%= flash[:alert] %>
+ </div>
+<% end %>
+ <tr>
+<th style="border: none;">名前</th>
+<td style="border: none;">
+<span>(姓) </span>
+</td>
+<td style="border: none;">
+<%= f.text_field :firstname %>
+<span>　(名)　</span>
+<%= f.text_field :lastname %>
+</td>
+</tr>
+<tr>
+<th style="border: none;">フリガナ</th>
+<td style="border: none;">
+<span>(セイ) </span>
+</td>
+<td style="border: none;">
+<%= f.text_field :firstname_ruby %>
+<span>　(メイ) </span>
+<%= f.text_field :lastname_ruby %>
+</td>
+</tr>
+<tr>
+<th style="border: none;">メールアドレス</th>
+<td style="border: none;"></td>
+<td style="border: none;"><%= f.email_field :email %><td>
+</tr>
+<tr>
+<th style="border: none;">郵便番号(ハイフンなし)</th>
+<td style="border: none;"></td>
+<td style="border: none;"<%= f.text_field :postal_code %></td>
+</tr>
+<tr>
+<th style="border: none;">住所</th>
+<td style="border: none;"></td>
+<td style="border: none;"><%= f.text_field :address %></td>
+</tr>
+<tr>
+<th style="border: none;">電話番号(ハイフンなし)</th>
+<td style="border: none;"></td>
+<td style="border: none;"><%= f.phone_field :phone_number %></td>
+</tr>
+</table>
+<div class="row">
+<div class="col-lg-2">
+<%= f.submit "登録内容を保存する", class: "btn btn-info" %>
+</div>
+<% end %>
+<div class="col-lg-3">
+<%= link_to "退会する", users_withdrawal_path, class: "btn btn-danger" %>
+</div>
+</div>

@@ -1,0 +1,75 @@
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<h3><%=@user.firstname+@user.lastname %>さんの会員情報</h3>
+		<%= form_for(@user, url: admins_user_path(@user)) do |f| %>
+		<table class="table", style="border:none;">
+		<tr>
+			<th style="border:none;">会員ID</th>
+			<td style="border:none;"><%= @user.id %></td>
+		</tr>
+			<tr>
+				<th style="border:none;">名前</th>
+					<td style="border:none;"><span>(姓) </span></td>
+				<td style="border:none;">
+					<%= f.text_field :firstname %>
+					<span>　(名)　</span>
+					<%= f.text_field :lastname %>
+				</td>
+		</tr>
+		<tr>
+			<th style="border:none;">フリガナ</th>
+				<td style="border:none;"><span>(セイ) </span></td>
+			<td style="border:none;">
+				<%= f.text_field :firstname_ruby %>
+				<span>　(メイ) </span>
+				<%= f.text_field :lastname_ruby %>
+			</td>
+		</tr>
+		<tr>
+			<th style="border:none;">メールアドレス</th>
+			<td style="border:none;"></td>
+			<td style="border:none;">
+				<%= f.email_field :email %>
+			<td>
+		</tr>
+		<tr>
+			<th style="border:none;">郵便番号(ハイフンなし)</th>
+			<td style="border:none;"></td>
+			<td style="border:none;">
+				<%= f.text_field :postal_code %>
+			</td>
+		</tr>
+		<tr>
+			<th style="border:none;">住所</th>
+			<td style="border:none;"></td>
+			<td style="border:none;">
+				<%= f.text_field :address %>
+			</td>
+		</tr>
+		<tr>
+			<th style="border:none;">電話番号(ハイフンなし)</th>
+			<td style="border:none;"></td>
+			<td style="border:none;">
+				<%= f.phone_field :phone_number %>
+			</td>
+		</tr>
+		<tr>
+			<th style="border:none;">会員ステータス</th>
+			<td style="border:none;"></td>
+			<td style="border:none;">
+				<%= f.radio_button  :deleted, false %><span>有効</span>
+				<%= f.radio_button  :deleted, true %><span>退会済み</span>
+			</td>
+		</tr>
+		</table>
+
+		<div class="row">
+		<div class="col-lg-2">
+		<%= f.submit "変更を保存する", class: "btn btn-info" %>
+		</div>
+		<% end %>
+	</div>
+</div>	
+

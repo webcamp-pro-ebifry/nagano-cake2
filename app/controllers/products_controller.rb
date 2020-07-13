@@ -8,19 +8,23 @@ class ProductsController < ApplicationController
   end
 
   def index
-      @quantity = Product.count
+    @genres = Genre.where(status: "有効")
     if params[:genre_id].present?
       @products = Products.where(genre_id: params[:genre_id],is_selling: true)
-      @index_products = @products.order(:updated_at).page(params[:page])
-      @genre = Genre.find(params[:genre_id])
-      @genres = Genre.all
+      @index_products = @products.order(:updated_at).page(params[:page]).per(8)
+      #@genre = Genre.find(params[:genre_id])
+      @genre = Genre.where(id: params[:genre_id], status: 0)
     elsif params[:name].present?
       @products = Products.where("name LIKE ?", "#{params[:name]}%")
-      @index_products = @products.order(:updated_at).page(params[:page])
-      @genres = Genre.all
+      @index_products = @products.order(:updated_at).page(params[:page]).per(8)
+      @genres = Genre.where(status: "有効")
     else
-      @products = Product.all.order(:updated_at).page(params[:page])
-      @genres = Genre.all
+      #@products = Product.all.order(:updated_at).page(params[:page]).per(8)
+      @p = Product.joins(:genre).where(genres: {status: "有効"}).order(:updated_at)
+      @products = @p.page(params[:page]).per(8)
+      @genres = Genre.where(status: "有効")
+      @quantity = @p.count
+
     end
   end
 
