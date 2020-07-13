@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
 
 
+  namespace :admins do
+    resources :order_details, only:[:update]
+  end
+
+
   get 'users/withdrawal' => 'users#withdrawal'
   resource :users, only:[:show ,:edit,:update,:destroy]
+
 
   devise_for :users
 
 
-  resources :order_details, only: [:index,:show,:update]
+  resources :order_details, only: [:index,:show,:create,:update]
 
   namespace :admins do
    resources :orders, only: [:top,:index,:show,:update]
