@@ -1,4 +1,5 @@
 class CartItemsController < ApplicationController
+    before_action :authenticate_user!
 	def index
 		@cart_item = CartItem.new
 		@cart_items = CartItem.where(user_id: current_user)

@@ -1,3 +1,9 @@
+<% if @shipping.errors.any?%>
+  <h3><%= @shipping.errors.count%>errors pfohibitted this shipping_address from being updated:</h3>
+  <%= @shipping.errors.full_messages.each do |message| %>
+  	<li><% message %></li>
+  <% end %>
+<% end %>
 <h2>配送先編集</h2>
 <%= form_for(@shipping) do |f| %>
 	<div class="">

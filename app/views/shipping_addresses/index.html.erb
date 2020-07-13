@@ -37,9 +37,7 @@
 						<td><%= f.name %></td>
 						<td><%= link_to "Edit",edit_shipping_address_path(f.id) %></td>
 						<td><%= link_to "Destroy", shipping_address_path(f.id) , method: :delete, "data-confirm" => "Are you sure?" %></td>
-					
 					</tr>
-
 					<% end %>
 				</tbody>
 			</table>

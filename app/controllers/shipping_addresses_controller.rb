@@ -1,8 +1,9 @@
 class ShippingAddressesController < ApplicationController
+	before_action = :authenticate_user!
 	def index
 		@user = current_user
 		@shipping = ShippingAddress.new
-		@shippings = @user.shipping_addresses
+		@shippings = ShippingAddress.where(user_id: current_user)
 	end
 
 	def create
@@ -12,7 +13,9 @@ class ShippingAddressesController < ApplicationController
 		if @shipping.update(shipping_params)
 			redirect_to shipping_addresses_path
 		else
-			render "index"
+			@user = current_user
+			@shippings = ShippingAddress.where(user_id: current_user)
+			render 'index'
 		end
 	end
 
@@ -24,6 +27,11 @@ class ShippingAddressesController < ApplicationController
     	@shipping = ShippingAddress.find(params[:id])
     	if @shipping.update(shipping_params)
     		redirect_to shipping_addresses_path
+    	else
+    		@user = current_user
+    		@shipping = ShippingAddress.new
+    		@shippings = ShippingAddress.where(user_id: current_user)
+    		render 'edit'
     	end
 
     end

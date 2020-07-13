@@ -7,5 +7,4 @@ class User < ApplicationRecord
 
   has_many :cart_items, dependent: :destroy
   has_many :shipping_addresses
-
 end
