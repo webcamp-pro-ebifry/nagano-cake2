@@ -18,7 +18,7 @@
           <% i = 0 %>
           <% @cart_item.each do |cart_item| %>
           <tr>
-            <td><%= attachment_image_tag cart_item.product, :image ,:fill,60,60,fallback: "no_image.jpg", size: '100x70' %></td>
+            <td><%= attachment_image_tag cart_item.product, :image ,:fill,60,60,fallback: "no_image.jpg", size: '100x80' %></td>
                 <%#= attachment_image_tag @product, :image ,fallback: "no_image.jpg"%>
             <td><%= (cart_item.product.price * 1.1).round %></td>
             <td><%= cart_item.count %></td>
@@ -29,7 +29,8 @@
         </tbody>
       </table>      
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-3 order-index-2">
+      <h2></h2>
       <table class="table">
         <thead>
           <tr>
@@ -40,48 +41,52 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= @order.postage %></td>
-            <td><%= (i * 1.1).round %></td>
+            <td><%= @order.postage %>円</td>
+            <td><%= (i * 1.1).round %>円</td>
             <td>
-              <%= (i * 1.1).round + @order.postage %></td>
+              <%= (i * 1.1).round + @order.postage %>円</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-9">
-    <h3>支払い方法</h3>
+    <div class="col-lg-9 order-index">
+    <span>支払い方法</span>
      <% if @order.payment_method == true %>
-                      <p>銀行振込</p>
+                      <span>銀行振込</span>
                         <% else %>
-                      <p>クレジットカード</p>
+                      <span>クレジットカード</span><br>
                     <% end %>
                   </td>
-    <h3>お届け先</h3>
-    <P><span><%= @order.postcode %></span>
-    <%= @order.address %></P>
-    <%= @order.name %>
+    <span>お届け先</span>
+    <span><%= @order.postcode %></span>
+    <%= @order.address %><br>
+    <%= @order.name %>様
     <% end %>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-5"></div>
+    <div class="col-lg-2">
+      <%= form_with(model: @order, url:orders_path, method: :post, local: true) do |f| %>
+
+        <% i = 0 %>
+        <% @cart_item.each do |cart_item| %>
+        <% i = i + cart_item.product.price*cart_item.count %>
+        <% end %>
+        <%= f.hidden_field :postage, :value => @order.postage %>
+        <%= f.hidden_field :payment, :value => (i * 1.1).round + @order.postage%>
+        <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+        <%= f.hidden_field :name, :value => @order.name %>
+        <%= f.hidden_field :postcode, :value => @order.postcode %>
+        <%= f.hidden_field :address, :value => @order.address %>
+        <%= f.submit "購入を確定する", class: 'btn btn-success btn-lg' %>
+      <% end %>
+    </div>
+    <div class="col-lg-5"></div>
   </div>
 </div>
 
 
-
-
 <!-- よくわかってない -->
-<%= form_with(model: @order, url:orders_path, method: :post, local: true) do |f| %>
-
-  <% i = 0 %>
-  <% @cart_item.each do |cart_item| %>
-  <% i = i + cart_item.product.price*cart_item.count %>
-  <% end %>
-  <%= f.hidden_field :postage, :value => @order.postage %>
-  <%= f.hidden_field :payment, :value => (i * 1.1).round + @order.postage%>
-  <%= f.hidden_field :payment_method, :value => @order.payment_method %>
-  <%= f.hidden_field :name, :value => @order.name %>
-  <%= f.hidden_field :postcode, :value => @order.postcode %>
-  <%= f.hidden_field :address, :value => @order.address %>
-  <%= f.submit "購入を確定する", class: 'btn btn-success btn-lg' %>
-<% end %>
