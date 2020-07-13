@@ -3,6 +3,7 @@ class Admins::ProductsController < ApplicationController
   	@products = Product.page(params[:page])
   end
 
+
   def new
     @product = Product.new
   end
@@ -46,4 +47,5 @@ class Admins::ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :introduce, :image, :price, :genre_id, :product_status, :delete_flag)
   end
+
 end

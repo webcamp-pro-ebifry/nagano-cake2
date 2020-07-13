@@ -15,7 +15,7 @@ before_action :authenticate_user!
 	end
 
 	def update
-		@user = User.find(current_user.id)
+		@user = current_user
 		if @user.update(user_params)
 			if user_signed_in?
 				flash[:notice] = "登録情報が更新されました。"
@@ -28,25 +28,20 @@ before_action :authenticate_user!
 			redirect_to request.referrer
 		end
 	end
-
 	def withdrawl
-		@user = User.find(params[:id])
-		if @user.id = current_user.id
-			redirect_to root_path
-		end
+		@user = current_user
 	end
-
-	def invalid
-		@user = User.find(params[:id])
-		@user.update(user_params)
-		reset_session
-		flash[:notice] = "ありがとうございました。"
-		redirect_to root_path
-	end
+	def destroy
+    @user = current_user
+    @user.destroy
+    flash[:notice] = "退会しました"
+    redirect_to root_path
+  end
 
 	private
 	def user_params
-		params.require(:user).permit(:firstname, :lastname, :firstname_ruby, :lastname_ruby, :email, :postal_code, :address, :phone_number)
+
+		params.require(:user).permit(:firstname, :lastname, :firstname_ruby, :lastname_ruby, :email, :postal_code, :address, :phone_number, :is_valid,:reset_password_token, :password, :encrypted_password)
 	end
 end
 

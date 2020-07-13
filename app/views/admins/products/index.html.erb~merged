@@ -1,0 +1,43 @@
+
+<div class="cotainer">
+<div class="row">
+<div class="col-lg-1"></div>
+<div class="col-lg-8">
+
+<h3>商品一覧</h3>
+
+<%= flash[:notice] %>
+
+<%= link_to "+", new_admins_product_path, class:"btn btn-default btn-circle" %>
+
+<table class="table table-borderless">
+	<thead class="thead-dark">
+		<tr>
+			<th>商品ID</th>
+			<th>商品名</th>
+			<th>税抜き価格</th>
+			<th>ジャンル</th>
+			<th>ステータス</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @products.each do |product| %>
+			<tr>
+				<td><%= product.id %></td>
+				<td>
+                	<%= link_to admins_product_path(product.id) do %>
+					<%= product.name %>
+					<% end %>
+		    	</td>
+            	<td><%= product.price %></td>
+            	<td><%= product.genre.name %></td>
+            	<td><%= product.product_status %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= paginate @products %>
+</div>
+</div>
+</div>
