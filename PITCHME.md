@@ -1,24 +1,22 @@
-# README
+### こんにちは！
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+これはサンプルのスライド資料です。
 
-* Ruby version
 
-* System dependencies
+---
 
-* Configuration
 
-* Database creation
+### 2枚目のスライド
 
-* Database initialization
 
-* How to run the test suite
+---
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+### 3枚目のスライド
 
-* ...
+
+---
+
+
+### おわり
