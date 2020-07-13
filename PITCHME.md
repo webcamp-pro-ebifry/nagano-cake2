@@ -14,8 +14,7 @@ ECサイトと管理サイトにわかれており、管理から注文まで使
 
 ### 設計書類
 [詳細設計](https://docs.google.com/spreadsheets/d/1DHn-uvwObS1IeTx7exbPuYQGC6Q5_TsFaXN3z9AlKJ4/edit#gid=0)
-[テーブル設計書]（https://docs.google.com/spreadsheets/d/18dAOY0RwZvcOMRVHuFo_qxZ-6UxRntqC993Huhagnfs/edit#gid=0）
-
+[テーブル設計書](https://docs.google.com/spreadsheets/d/18dAOY0RwZvcOMRVHuFo_qxZ-6UxRntqC993Huhagnfs/edit#gid=0)
 上記から閲覧できます
 ---
 
