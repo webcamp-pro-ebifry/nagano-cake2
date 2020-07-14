@@ -2,7 +2,7 @@ class Admins::UsersController < ApplicationController
 
 
 def index
-	@users = User.page(params[:page])
+	@users = User.with_deleted.page(params[:page])
 end
 
 def show
