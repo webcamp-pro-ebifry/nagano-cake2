@@ -21,11 +21,11 @@
 <table class="table table-bordered">
     <tr>
 <th class="col-lg-2 active">氏名</th>
-    <td><%= @user.firstname %><%= @user.lastname %></td>
+    <td><%= @user.lastname %><%= @user.firstname %></td>
     </tr>
     <tr>
     <th class="col-lg-2 active">カナ</th>
-    <td><%= @user.firstname_ruby %> <%= @user.lastname_ruby %></td>
+    <td><%= @user.lastname_ruby %> <%= @user.firstname_ruby %></td>
     </tr>
     <tr>
     <th class="col-lg-2 active">郵便番号</th>
@@ -60,5 +60,5 @@
         </div>
         <div class="col-lg-2">
         <div class="link_index">
-        <%= link_to "一覧を見る",root_path, class: "btn btn-info"%>
+        <%= link_to "一覧を見る", order_details_path, class: "btn btn-info"%>
     </div>

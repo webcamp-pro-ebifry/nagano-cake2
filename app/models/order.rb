@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-	belongs_to :user
+	belongs_to :user , -> { with_deleted }
 	has_many :order_details, dependent: :destroy
 
 	enum status:{

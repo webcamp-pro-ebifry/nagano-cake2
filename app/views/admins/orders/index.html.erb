@@ -21,7 +21,7 @@
 						    <% end %>
 						</td>
 						<td><%= f.user.lastname %><%= f.user.firstname %></td>
-						<td><%= f.order_details.count %></td>
+						<td><%= f.order_details.sum(:count) %></td>
 						<td><%= f.status %></td>
 					</tr>
 					<% end %>
