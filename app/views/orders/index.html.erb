@@ -24,7 +24,7 @@
                 <%#= attachment_image_tag @product, :image ,fallback: "no_image.jpg"%>
             <td><%= (cart_item.product.price * 1.1).round %></td>
             <td><%= cart_item.count %></td>
-            <td><%= cart_item.product.price*cart_item.count %></td>
+            <td><%= (cart_item.product.price*cart_item.count*1.1).round %></td>
             <% i = i + cart_item.product.price*cart_item.count %>
           </tr>
           <% end %>

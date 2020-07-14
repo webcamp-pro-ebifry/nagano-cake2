@@ -2,15 +2,15 @@ class Admins::UsersController < ApplicationController
 
 
 def index
-	@users = User.page(params[:page])
+	@users = User.with_deleted.page(params[:page])
 end
 
 def show
-  	@user = User.find(params[:id])
+  	@user = User.with_deleted.find(params[:id])
 end
 
 def edit
-	@user = User.find(params[:id])
+	@user = User.with_deleted.find(params[:id])
 end
 
 def update

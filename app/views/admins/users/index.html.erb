@@ -26,16 +26,16 @@
 				<td><%= user.id %></td>
 				<td class="users-name">
                 	<%= link_to admins_user_path(user.id) do %>
-					<%= user.firstname %>
 					<%= user.lastname %>
+					<%= user.firstname %>
 					<% end %>
 		    	</td>
             	<td><%= user.email %></td>
             	<td>
-            		<% if user.deleted == true %>
-            			<p>退会済み</p>
-                    <% else %>
+            		<% if user.deleted_at.nil? %>
             			<p>有効</p>
+                    <% else %>
+            			<p>退会済み</p>
             		<% end %>
             	</td>
 			</tr>

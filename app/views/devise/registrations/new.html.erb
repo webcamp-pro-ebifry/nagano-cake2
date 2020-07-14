@@ -11,18 +11,18 @@
         <th style="border:none;">名前</th>
           <td style="border:none;"><span>(姓) </span></td>
         <td style="border:none;">
-          <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname"  %>
-          <span>　(名)　</span>
           <%= f.text_field :lastname, autofocus: true, autocomplete: "lastname"  %>
+          <span>　(名)　</span>
+          <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname"  %>
         </td>
     </tr>
     <tr>
       <th style="border:none;">フリガナ</th>
         <td style="border:none;"><span>(セイ) </span></td>
       <td style="border:none;">
-        <%= f.text_field :firstname_ruby, autofocus: true, autocomplete: "firstname_ruby" %>
-        <span>　(メイ) </span>
         <%= f.text_field :lastname_ruby, autofocus: true, autocomplete: "lastname_ruby" %>
+        <span>　(メイ) </span>
+        <%= f.text_field :firstname_ruby, autofocus: true, autocomplete: "firstname_ruby" %>
       </td>
     </tr>
     <tr>
