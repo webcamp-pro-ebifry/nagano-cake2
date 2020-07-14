@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9">
+      <p id="notice"><%= notice %></p>
+      <h2>注文情報確認</h2>
+      <%= form_with(model: @order, url: orders_path,method: :post,local: true ) do |f| %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th></th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+
+        </thead>
+        <tbody>
+          <% i = 0 %>
+          <% @cart_item.each do |cart_item| %>
+          <tr>
+            <td><%= attachment_image_tag cart_item.product, :image ,:fill,60,60,fallback: "no_image.jpg", size: '100x80' %></td>
+            <td><%= cart_item.product.name %></td>
+                <%#= attachment_image_tag @product, :image ,fallback: "no_image.jpg"%>
+            <td><%= (cart_item.product.price * 1.1).round %></td>
+            <td><%= cart_item.count %></td>
+            <td><%= (cart_item.product.price*cart_item.count*1.1).round %></td>
+            <% i = i + cart_item.product.price*cart_item.count %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>      
+    </div>
+    <div class="col-lg-3 order-index-2">
+      <h2></h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>送料</th>
+            <th>商品合計（税込）</th>
+            <th>請求金額</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @order.postage %>円</td>
+            <td><%= (i * 1.1).round %>円</td>
+            <td>
+              <%= (i * 1.1).round + @order.postage %>円</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-9 order-index">
+    <span>支払い方法</span>
+     <% if @order.payment_method == true %>
+                      <span>銀行振込</span>
+                        <% else %>
+                      <span>クレジットカード</span><br>
+                    <% end %>
+                  </td>
+    <span>お届け先</span>
+    <span><%= @order.postcode %></span>
+    <%= @order.address %><br>
+    <%= @order.name %>様
+    <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-5"></div>
+    <div class="col-lg-2">
+      <%= form_with(model: @order, url:orders_path, method: :post, local: true) do |f| %>
+
+
+  <% i = 0 %>
+  <%# c = 0 %>
+  <% @cart_item.each do |cart_item| %>
+  <% i = i + cart_item.product.price*cart_item.count %>
+  <%# c = c + cart_item.count %>
+  <% end %>
+
+
+  <%= f.hidden_field :postage, :value => @order.postage %>
+  <%= f.hidden_field :payment, :value => (i * 1.1).round + @order.postage %>
+  <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+  <%= f.hidden_field :name, :value => @order.name %>
+  <%= f.hidden_field :postcode, :value => @order.postcode %>
+  <%= f.hidden_field :address, :value => @order.address %>
+  <%#= f.hidden_field :count(order_details_path), :value => c %>
+  <%= f.submit "購入を確定する", class: 'btn btn-success btn-lg' %>
+
+
+
+
+<% end %>

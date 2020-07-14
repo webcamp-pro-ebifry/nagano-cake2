@@ -1,0 +1,41 @@
+<div class="container">
+		<div class="row">
+			<div class="col-lg-3">
+				<h3>商品編集</h3>
+			</div>
+		</div>	
+		<div class="row", style="height:400px">
+				<%= form_for(@product, url: admins_product_path(@product)) do |f| %>
+			<div class="col-lg-3">
+				<%= attachment_image_tag @product, :image , :fill, 200, 150, fallback: "no_image.jpg", size: '200x150'%>
+				 <%= f.attachment_field :image, placeholder: "" %>
+			</div>
+			<div class="col-lg-3">
+				<div>
+					<h4>商品名</h4>
+					<%= f.text_field :name %>
+				</div>
+				<div>
+					<h4>商品説明</h4>
+					<%= f.text_area :introduce %>
+				</div>
+				<div>
+					<h4>ジャンル</h4>
+					 <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+				</div>
+				<div>
+					<h4>税込価格</h4>
+					<%= f.text_field :price %>
+				</div>
+				<div>
+					<h4>販売ステータス</h4>
+			        <%= f.select(:product_status, {'販売中': '販売中', '売り切れ': '売り切れ'}, {include_blank: "選択して下さい"}) %>
+				</div>
+			</div>
+			<div class="col-lg-2">
+			<%= f.submit "変更を保存する" %>
+			</div>
+			<% end %>
+	</div>
+</div>
+

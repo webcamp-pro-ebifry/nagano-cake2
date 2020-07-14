@@ -1,0 +1,49 @@
+
+<div class="cotainer">
+
+<div class="row">
+<div class="col-xs-2"></div>
+
+<div class="col-xs-8">
+
+<h2>会員一覧</h2>
+
+<%= flash[:notice] %>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>氏名</th>
+			<th>メールアドレス</th>
+			<th>ステータス</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<td><%= user.id %></td>
+				<td class="users-name">
+                	<%= link_to admins_user_path(user.id) do %>
+					<%= user.lastname %>
+					<%= user.firstname %>
+					<% end %>
+		    	</td>
+            	<td><%= user.email %></td>
+            	<td>
+            		<% if user.deleted_at.nil? %>
+            			<p>有効</p>
+                    <% else %>
+            			<p>退会済み</p>
+            		<% end %>
+            	</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= paginate @users %>
+</div>
+<div class="col-xs-2"></div>
+</div>
+</div>

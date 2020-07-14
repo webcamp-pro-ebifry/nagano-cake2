@@ -1,0 +1,8 @@
+
+<div class="genre_serch">
+<h2>ジャンル検索</h2>
+    <% genres.each do |genre| %>
+        <p><%= genre.name %></P>
+    <% end %>
+</div>
+

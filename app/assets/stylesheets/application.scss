@@ -1,0 +1,219 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";  /*ここを追加*/
+@import "bootstrap";            /*ここを追加*/
+
+/*ページ遷移*/
+
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+
+
+/*スライドショー*/
+#container{
+	height: 400px;
+	background-size: cover;
+    background-position: center;
+}
+
+
+body{
+	margin:0 0 0 0;
+}
+
+
+.nav{
+	padding-right:20px;
+}
+
+/*ココまでゆっけがいじりました*/
+
+.products{
+	display: flex;
+	flex-wrap:wrap;
+	justify-content: center;
+}
+
+.productbox{
+	width: 200px;
+	height: 200px;
+	border: solid 1px #707070;
+	margin:5px;
+	}
+
+.productbox p{
+	font-size:15px;
+}
+.productbox_intro{
+	padding:10px
+}
+
+
+.admin_sessions_new{
+	margin-top:300px;
+}
+
+.products_index{
+	margin-top:100px;
+}
+.genre_serch{
+	margin-top:100px;
+	border:solid 1px #707070;
+}
+
+.genre_serch h2{
+	border-bottom:solid 1px #707070;
+	font-size:20px;
+}
+
+.genre_serch link_to{
+	color: #707070;
+	text-decoration:none;
+}
+
+.about{
+	margin-top:100px;
+}
+
+.glyphicon{
+	margin:0;
+}
+
+#ebi{
+	height:60px;
+	margin:0 0 0 100px;
+}
+.order-sum p{
+	font-size:20px;
+	color:#FF0461;
+}
+.order-index{
+	font-size:25px;
+	text-align:left;
+}
+
+.order-index-2{
+	margin-top: 50px;
+}
+
+.order-fin{
+	text-align:center;
+	margin-top:200px;
+}
+
+.order-fin p{
+	font-size:30px;
+}
+
+.order_details{
+	margin-top:100px;
+}
+
+.order_detail h2{
+	margin-top:40px;
+	margin-bottom:30px;
+}
+
+.cart{
+	text-align:left;
+}
+
+.cart table{
+	margin-top:30px;
+}
+
+.cart-index{
+	font-size:25px;
+	color:red;
+}
+
+.btn-sm{
+	color:#FFCCFF;
+}
+.btn-lg{
+	color:#FFCCFF;
+}
+
+
+.page{
+	background-color:gray;
+	border-radius:10px;
+}
+
+a:visited {
+    color: #fff;
+}
+.orderday a {
+	color:gray;
+}
+
+.cart1{
+	font-size:20px;;
+}
+.btn-primary{
+	color:#fff;
+}
+
+.more{
+	background-color:#FF9999;
+	border-radius:5px;
+}
+
+.navbar{
+	background-color:#bc8f8f;
+	margin:0;
+}
+
+.page-product{
+	background-color:gray;
+	border-radius:20px;
+}
+
+.table{
+	color:gray;
+}
+
+.users-name a{
+	color:gray;
+}
+.cart-item a{
+	color:white;
+}
+.cart-btn{
+	color:white;
+}
+
+.admin-products-td a{
+	color:gray;
+}
+.btn-circle {
+	color:gray;
+}
+.btn-circle a{
+	color:gray;
+}
+
+.marubtn{
+	background-color:gray;
+}
+.translation_missing{
+	color:white;
+}
+

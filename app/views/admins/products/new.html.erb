@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <h2>新規登録</h2>
+            <%= form_for(@product, url: admins_products_path(@product)) do |f| %>
+    <div class="col-xs-5">
+                <div>
+                <%= attachment_image_tag @product, :image_id, :fill, 100, 100, format: 'jpeg', fallback: "big_no_image.jpg" %>
+                </div>
+                <div>
+                    <%= f.attachment_field :image, placeholder: "" %>
+                </div>
+     </div>
+     <div class="col-xs-5">
+                <div>
+                    <span>商品名</span>
+                    <%= f.text_field :name, class:"form-control" %>
+                </div>
+                <div>
+                    <span>商品説明</span>
+                    <%= f.text_area :introduce, class:"form-control" %>
+                </div>
+                <div>
+                    <span>ジャンル</span>
+                    <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+                </div>
+                <div>
+                    <span>税抜き価格</span>
+                    <%= f.text_field :price, class:"form-control" %>
+                </div>
+                <div>
+                    <span>販売ステータス</span>
+                    <%= f.select(:product_status, {'販売中': '販売中', '売り切れ': '売り切れ'}, {include_blank: "選択して下さい"}) %>
+                </div>
+                              <%= f.submit "新規登録"%>
+    </div>
+            <% end %>
+  </div>
+</div>
+
+
+

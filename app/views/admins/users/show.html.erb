@@ -1,0 +1,55 @@
+
+<div class="container">
+	<h2><%= @user.firstname %><%= @user.lastname %>さんの会員情報</h2>
+
+	<div class="row">
+	<table class="table">
+		<tr>
+			<th>顧客ID</th>
+			<th>
+				<%= @user.id %><% if @user.deleted == true %>
+            			<p>退会会員</p>
+                    <% else %>
+            			<p>有効会員</p>
+            	<% end %>
+			</th>
+		</tr>
+		<tr>
+			<th>氏名</th>
+			<th><%= @user.firstname %><%= @user.lastname %></th>
+		</tr>
+		<tr>
+			<th>フリガナ</th>
+			<th><%= @user.firstname_ruby %><%= @user.lastname_ruby %></th>
+		</tr>
+		<tr>
+			<th>郵便番号</th>
+			<th><%= @user.postal_code %></th>
+		</tr>
+		<tr>
+			<th>住所</th>
+			<th><%= @user.address %></th>
+		</tr>
+		<tr>
+			<th>電話番号</th>
+			<th><%= @user.phone_number %></th>
+		</tr>
+		<tr>
+			<th>メールアドレス</th>
+			<th><%= @user.email %></th>
+		</tr>
+	</table>
+	</div>
+	<div class="row">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-2">
+		<%= link_to "編集する",edit_admins_user_path(@user.id), class:"btn btn-primary btn-md btn-block btn-base-1 mt-20"%>
+		</div>
+		<div class="col-lg-2">
+		<%= link_to "注文履歴一覧を見る",edit_admins_user_path(@user.id), class:"btn btn-primary btn-md btn-block btn-base-1 mt-20"%>
+		</div>
+		<div class="col-lg-3"></div>
+
+		<!--  注文履歴一覧も入れる　-->
+	</div>
+</div>
