@@ -11,7 +11,9 @@
   <body>
     <header id="header" class="">
       <nav class="navbar navbar-dark bg-dark">
+        <%= link_to root_path do %>
         <%= image_tag "nagano.png", alt: "えび", id: "ebi", width: "120px"%>
+         <% end %>
       <ul class="nav navbar-nav navbar-right">
         <!--if文でサインインとアウト時の表示を変更-->
         <% if admin_signed_in? %>

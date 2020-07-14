@@ -17,6 +17,18 @@
 @import "bootstrap-sprockets";  /*ここを追加*/
 @import "bootstrap";            /*ここを追加*/
 
+/*ページ遷移*/
+
+
+/*スライドショー*/
+#container{
+	height: 400px;
+	background-size: cover;
+    background-position: center;
+}
+
+/*ココまでゆっけがいじりました*/
+
 .products{
 	display: flex;
 	flex-wrap:wrap;

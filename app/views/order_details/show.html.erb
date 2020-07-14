@@ -77,13 +77,13 @@
         <% @order.order_details.each do |f| %>
           <tr>
            <td><%= f.product.name %></td>
-           <td><%= f.price %></td>
+           <td><%= (f.product.price * 1.1).round %></td>
            <td><%= f.count %></td>
-           <td><%= f.price*f.count %></td>
+           <td><%= (f.product.price * 1.1 * f.count).round %></td>
           </tr>
         <% end %>
       </tbody>
-      </table>      
+      </table>       
     </div>
     <div class="col-lg-4"></div>
 
