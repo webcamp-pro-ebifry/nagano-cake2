@@ -19,6 +19,12 @@
 
 /*ページ遷移*/
 
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+
 
 /*スライドショー*/
 #container{
@@ -27,12 +33,16 @@
     background-position: center;
 }
 
+body{
+	margin:0 0 0 0;
+}
+
+
 .nav{
 	padding-right:20px;
 }
 
 /*ココまでゆっけがいじりました*/
-
 
 .products{
 	display: flex;
@@ -149,6 +159,9 @@
 a:visited {
     color: #fff;
 }
+.orderday a {
+	color:gray;
+}
 
 .cart1{
 	font-size:20px;;
@@ -164,6 +177,7 @@ a:visited {
 
 .navbar{
 	background-color:#bc8f8f;
+	margin:0;
 }
 
 .page-product{

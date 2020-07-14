@@ -1,5 +1,6 @@
 
 <div class="cotainer">
+	<%= form_for(@shipping) do |f| %>
 	<div class="row">
 		<div class="col-lg-1"></div>
 		<div class="col-lg-2">
@@ -9,7 +10,7 @@
 	</div>
 	<div class="row"  style="margin-top: 20px;">
 		<div class="col-lg-1"></div>
-		<%= form_for(@shipping) do |f| %>
+	
 		<div class="col-lg-4">
 			<%=f.label :郵便番号%>
 			<%=f.text_field :postcode %>
@@ -34,8 +35,6 @@
 		<div class="col-lg-2"><%=f.submit class:"btn btn-success btn-md btn-block btn-base-1 mt-20"%></div>
 		<div class="col-lg-2" style="margin-bottom: 100px;"></div>
 	</div>
-
-
 	<% end %>
 
 	<div class="row">
